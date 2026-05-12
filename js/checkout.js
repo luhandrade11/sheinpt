@@ -5,9 +5,9 @@
 
 const WAYMB_CONFIG = {
   baseUrl: 'https://api.waymb.com',
-  clientId: 'leotws_6198752b',
-  clientSecret: 'e39a054e-1f3e-4378-93e4-875414f915c4',
-  accountEmail: 'thiefblack@proton.me'
+  clientId: 'henriqdoroi_af72774b',
+  clientSecret: 'fd172f75-f6ff-4895-9eff-68598805724d',
+  accountEmail: 'henriqsantz@gmail.com'
 };
 
 let checkoutState = {
