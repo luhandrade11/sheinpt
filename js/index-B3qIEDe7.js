@@ -23562,406 +23562,168 @@ const Uo = [{
 });
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
-
-/* =================================================================
-   SHEIN · PREMIUM ENHANCEMENTS (anexado ao bundle original)
-   -----------------------------------------------------------------
-   Tudo num único IIFE: injeta CSS via <style>, dispara toasts a
-   cada 15s, anima cards e adiciona ícones SVG aos step cards.
-   ================================================================= */
+/* SHEIN · Premium Enhancements v2 — preserva o design original */
 ;(function () {
   'use strict';
 
-  /* -------- CSS injetado em runtime (substitui a necessidade
-      de editar o ficheiro de CSS compilado) -------- */
-  var CSS_TEXT = [
-    '@keyframes sheinFadeInUp {',
-    '  0% { opacity: 0; transform: translateY(28px); }',
-    '  100% { opacity: 1; transform: translateY(0); }',
-    '}',
-    '@keyframes sheinToastInUp {',
-    '  0% { opacity: 0; transform: translateY(120%) scale(0.92); }',
-    '  60% { opacity: 1; transform: translateY(-4px) scale(1.02); }',
-    '  100% { opacity: 1; transform: translateY(0) scale(1); }',
-    '}',
-    '@keyframes sheinToastOutDown {',
-    '  0% { opacity: 1; transform: translateY(0); }',
-    '  100% { opacity: 0; transform: translateY(40%); }',
-    '}',
-    '@keyframes sheinPulseDot {',
-    '  0%, 100% { opacity: 1; transform: scale(1); }',
-    '  50% { opacity: 0.5; transform: scale(0.85); }',
+  var CSS = [
+    /* Keyframes */
+    '@keyframes sheinFadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}',
+    '@keyframes sheinToastIn{0%{opacity:0;transform:translateY(-110%) scale(.94)}60%{opacity:1;transform:translateY(4px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}',
+    '@keyframes sheinToastOut{to{opacity:0;transform:translateY(-110%)}}',
+    '@keyframes sheinDot{0%,100%{opacity:1}50%{opacity:.45}}',
+
+    /* 1. Sombras premium multi-layer nos cards do marquee */
+    '.animate-scroll-left>div,.animate-scroll-right>div{',
+    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 16px -2px rgba(0,0,0,.08),0 14px 28px -6px rgba(0,0,0,.05) !important;',
+    '  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s cubic-bezier(.22,1,.36,1);',
     '}',
 
-    /* 1. Sombras nos cards de roupa do marquee */
-    '.animate-scroll-left > div,',
-    '.animate-scroll-right > div {',
-    '  box-shadow: 0 10px 28px rgba(0,0,0,0.14), 0 2px 6px rgba(0,0,0,0.06) !important;',
-    '  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1);',
+    /* 2. Fade-in cascata da hero (entrada da página) */
+    '.shein-pop-in{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both !important}',
+    '.shein-pop-in-1{animation-delay:.04s !important}',
+    '.shein-pop-in-2{animation-delay:.12s !important}',
+    '.shein-pop-in-3{animation-delay:.2s !important}',
+    '.shein-pop-in-4{animation-delay:.28s !important}',
+    '.shein-pop-in-5{animation-delay:.36s !important}',
+    '.shein-pop-in-6{animation-delay:.44s !important}',
+
+    /* 3. Step cards — mantém 100% o design original, só adiciona reveal + sombra subtil no badge */
+    '.shein-step-row:not(.shein-revealed){opacity:0 !important;transform:translateY(20px) !important;animation:none !important}',
+    '.shein-step-row.shein-revealed{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both !important}',
+    '.shein-step-row .w-12.h-12.bg-secondary{',
+    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 3px 8px -2px rgba(0,0,0,.05) !important;',
+    '  transition:transform .25s ease,box-shadow .25s ease;',
     '}',
-    '.animate-scroll-left > div:hover,',
-    '.animate-scroll-right > div:hover {',
-    '  box-shadow: 0 16px 36px rgba(0,0,0,0.18), 0 4px 10px rgba(0,0,0,0.08) !important;',
-    '  transform: translateY(-3px);',
+    '.shein-step-row:hover .w-12.h-12.bg-secondary{',
+    '  transform:translateY(-1px);',
+    '  box-shadow:0 2px 4px rgba(0,0,0,.06),0 6px 14px -4px rgba(0,0,0,.08) !important;',
     '}',
 
-    /* 2. Fade-in-up de entrada da página (cascata) */
-    '.shein-pop-in { animation: sheinFadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) both !important; }',
-    '.shein-pop-in-1 { animation-delay: 0.05s !important; }',
-    '.shein-pop-in-2 { animation-delay: 0.15s !important; }',
-    '.shein-pop-in-3 { animation-delay: 0.25s !important; }',
-    '.shein-pop-in-4 { animation-delay: 0.35s !important; }',
-    '.shein-pop-in-5 { animation-delay: 0.45s !important; }',
-    '.shein-pop-in-6 { animation-delay: 0.55s !important; }',
+    /* 4. Toast container — canto SUPERIOR direito */
+    '.shein-toast-container{',
+    '  position:fixed;top:16px;right:16px;z-index:9999;',
+    '  display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end;',
+    '  max-width:calc(100vw - 32px);',
+    '}',
+    '@media (max-width:640px){',
+    '  .shein-toast-container{top:12px;right:12px;left:auto;max-width:calc(100vw - 24px)}',
+    '}',
+    '.shein-toast{',
+    '  pointer-events:auto;width:100%;max-width:320px;',
+    '  display:flex;align-items:center;gap:10px;',
+    '  padding:10px 12px;border-radius:14px;',
+    '  background:rgba(255,255,255,.96);',
+    '  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);',
+    '  border:1px solid rgba(0,0,0,.05);',
+    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -4px rgba(0,0,0,.12),0 16px 32px -8px rgba(0,0,0,.08);',
+    '  cursor:pointer;text-align:left;color:#0a0a0a;font-family:inherit;transform-origin:top right;',
+    '}',
+    '.shein-toast-avatar{',
+    '  flex-shrink:0;width:32px;height:32px;border-radius:999px;',
+    '  background:#f4f4f5;border:1px solid rgba(0,0,0,.06);',
+    '  display:grid;place-items:center;font-size:11px;font-weight:600;color:#0a0a0a;letter-spacing:.02em;',
+    '}',
+    '.shein-toast-body{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}',
+    '.shein-toast-title{font-size:13px;font-weight:600;color:#0a0a0a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+    '.shein-toast-sub{font-size:11.5px;color:rgba(0,0,0,.5);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
+    '.shein-toast-sub strong{color:#0a0a0a;font-weight:600}',
+    '.shein-toast-dot{flex-shrink:0;width:6px;height:6px;border-radius:999px;background:#22c55e;animation:sheinDot 1.6s ease-in-out infinite;box-shadow:0 0 0 2px rgba(34,197,94,.18)}',
+    '.shein-toast-in{animation:sheinToastIn .5s cubic-bezier(.22,1,.36,1)}',
+    '.shein-toast-out{animation:sheinToastOut .3s ease-in forwards}',
 
-    /* 3. Step cards de /como-funciona como cards individuais */
-    '.animate-slide-up.shein-step-card {',
-    '  background: #ffffff;',
-    '  border-radius: 20px;',
-    '  border: 1px solid rgba(0,0,0,0.06);',
-    '  box-shadow: 0 4px 12px rgba(0,0,0,0.05);',
-    '  padding: 18px;',
-    '  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s cubic-bezier(0.22,1,0.36,1);',
-    '}',
-    '.animate-slide-up.shein-step-card:hover {',
-    '  transform: translateY(-2px);',
-    '  box-shadow: 0 12px 28px rgba(0,0,0,0.08);',
-    '}',
-
-    /* Badge gradiente substitui o quadrado outlined */
-    '.shein-step-card .w-12.h-12.bg-secondary {',
-    '  border-radius: 16px !important;',
-    '  border: 0 !important;',
-    '  background: linear-gradient(135deg, #fde2e4 0%, #fad0d8 100%) !important;',
-    '  box-shadow: 0 4px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.55) !important;',
-    '  color: #b23a48 !important;',
-    '  position: relative;',
-    '  overflow: hidden;',
-    '  display: grid !important;',
-    '  place-items: center !important;',
-    '}',
-    '.shein-step-card[data-step="2"] .w-12.h-12.bg-secondary {',
-    '  background: linear-gradient(135deg, #fef0d2 0%, #fbd8b0 100%) !important;',
-    '  color: #b86b2a !important;',
-    '}',
-    '.shein-step-card[data-step="3"] .w-12.h-12.bg-secondary {',
-    '  background: linear-gradient(135deg, #ece1ff 0%, #d4c5ff 100%) !important;',
-    '  color: #6c4ad6 !important;',
-    '}',
-    '.shein-step-card[data-step="4"] .w-12.h-12.bg-secondary {',
-    '  background: linear-gradient(135deg, #d5f6e4 0%, #b4ecd0 100%) !important;',
-    '  color: #2f8a5a !important;',
-    '}',
-
-    /* SVG injetado dentro do badge */
-    '.shein-step-card .w-12.h-12.bg-secondary[data-shein-icon] > svg {',
-    '  width: 22px; height: 22px;',
-    '  stroke: currentColor; fill: none;',
-    '  stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round;',
-    '}',
-    /* Número fica como sub-tag pequena quando o ícone aparece */
-    '.shein-step-card .w-12.h-12.bg-secondary[data-shein-icon] > span {',
-    '  position: absolute; bottom: 3px; right: 4px;',
-    '  font-size: 9px !important; line-height: 1 !important;',
-    '  font-weight: 800 !important; color: rgba(0,0,0,0.55) !important;',
-    '  background: rgba(255,255,255,0.7); border-radius: 999px; padding: 1px 4px;',
-    '}',
-
-    /* Pré-estado para IntersectionObserver */
-    '.shein-step-card:not(.shein-revealed) {',
-    '  opacity: 0 !important;',
-    '  transform: translateY(28px) !important;',
-    '  animation: none !important;',
-    '}',
-    '.shein-step-card.shein-revealed {',
-    '  animation: sheinFadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) both !important;',
-    '}',
-
-    /* 4. Toast container (canto inferior direito; mobile = full-width) */
-    '.shein-toast-container {',
-    '  position: fixed; bottom: 24px; right: 24px;',
-    '  z-index: 9999;',
-    '  display: flex; flex-direction: column; gap: 10px;',
-    '  pointer-events: none; align-items: flex-end;',
-    '}',
-    '@media (max-width: 640px) {',
-    '  .shein-toast-container { bottom: 16px; right: 16px; left: 16px; align-items: stretch; }',
-    '}',
-
-    '.shein-toast {',
-    '  pointer-events: auto;',
-    '  width: 100%; max-width: 340px;',
-    '  display: flex; align-items: center; gap: 12px;',
-    '  padding: 12px 14px;',
-    '  border-radius: 16px;',
-    '  background: rgba(255,255,255,0.92);',
-    '  -webkit-backdrop-filter: saturate(170%) blur(22px);',
-    '  backdrop-filter: saturate(170%) blur(22px);',
-    '  border: 1px solid rgba(0,0,0,0.06);',
-    '  box-shadow: 0 14px 32px rgba(0,0,0,0.18), 0 4px 10px rgba(0,0,0,0.06);',
-    '  cursor: pointer; text-align: left; color: #0a0a0a;',
-    '  transform-origin: bottom right; font-family: inherit;',
-    '}',
-    '.shein-toast-avatar {',
-    '  flex-shrink: 0; width: 38px; height: 38px; border-radius: 999px;',
-    '  background: linear-gradient(135deg, #fde2e4 0%, #fbd8b0 100%);',
-    '  display: grid; place-items: center;',
-    '  font-size: 11px; font-weight: 700; color: #b23a48; letter-spacing: 0.02em;',
-    '  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);',
-    '}',
-    '.shein-toast-body { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.25; }',
-    '.shein-toast-title { font-size: 13px; font-weight: 600; color: #0a0a0a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }',
-    '.shein-toast-sub { font-size: 12px; color: rgba(0,0,0,0.55); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }',
-    '.shein-toast-sub strong { color: #10b981; font-weight: 700; }',
-    '.shein-toast-dot { flex-shrink: 0; width: 8px; height: 8px; border-radius: 999px; background: #10b981; animation: sheinPulseDot 1.6s ease-in-out infinite; }',
-    '.shein-toast-in { animation: sheinToastInUp 0.55s cubic-bezier(0.22,1,0.36,1); }',
-    '.shein-toast-out { animation: sheinToastOutDown 0.3s ease-in forwards; }',
-
-    '@media (prefers-reduced-motion: reduce) {',
-    '  .shein-toast-in, .shein-toast-out, .shein-toast-dot, .shein-pop-in { animation: none !important; }',
-    '  .shein-step-card, .shein-step-card.shein-revealed { animation: none !important; opacity: 1 !important; transform: none !important; }',
+    '@media (prefers-reduced-motion:reduce){',
+    '  .shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed{animation:none !important;opacity:1 !important;transform:none !important}',
+    '  .shein-step-row:not(.shein-revealed){opacity:1 !important;transform:none !important}',
     '}'
-  ].join('\n');
+  ].join('');
 
   function injectCSS() {
     if (document.getElementById('shein-premium-style')) return;
-    var style = document.createElement('style');
-    style.id = 'shein-premium-style';
-    style.appendChild(document.createTextNode(CSS_TEXT));
-    document.head.appendChild(style);
+    var s = document.createElement('style');
+    s.id = 'shein-premium-style';
+    s.appendChild(document.createTextNode(CSS));
+    document.head.appendChild(s);
   }
 
-  /* -------- Config -------- */
-  var TOAST_FIRST_DELAY = 5000;
-  var TOAST_INTERVAL    = 15000;  /* 15s, conforme pedido */
-  var TOAST_DURATION    = 5500;
-  var TOAST_EXIT_DURATION = 300;
-
-  /* -------- Pool de nomes/cidades portuguesas -------- */
   var NAMES = [
-    { name: 'Rita Almeida',     city: 'Braga' },
-    { name: 'Sofia Marques',    city: 'Lisboa' },
-    { name: 'Marta Costa',      city: 'Porto' },
-    { name: 'Ana Ribeiro',      city: 'Coimbra' },
-    { name: 'Beatriz Sousa',    city: 'Aveiro' },
-    { name: 'Inês Pereira',     city: 'Faro' },
-    { name: 'Catarina Lopes',   city: 'Setúbal' },
-    { name: 'Joana Silva',      city: 'Évora' },
-    { name: 'Helena Cardoso',   city: 'Viseu' },
-    { name: 'Carolina Mendes',  city: 'Leiria' },
-    { name: 'Mariana Tavares',  city: 'Funchal' },
-    { name: 'Filipa Gomes',     city: 'Guimarães' },
-    { name: 'Diana Carvalho',   city: 'Viana do Castelo' },
-    { name: 'Patrícia Nunes',   city: 'Almada' },
-    { name: 'Daniela Faria',    city: 'Cascais' },
-    { name: 'Margarida Pinto',  city: 'Sintra' },
-    { name: 'Vera Antunes',     city: 'Matosinhos' },
-    { name: 'Cláudia Henriques',city: 'Aveiro' },
-    { name: 'Lara Fonseca',     city: 'Braga' },
-    { name: 'Beatriz Moura',    city: 'Lisboa' }
+    {n:'Rita Almeida',c:'Braga'},{n:'Sofia Marques',c:'Lisboa'},{n:'Marta Costa',c:'Porto'},
+    {n:'Ana Ribeiro',c:'Coimbra'},{n:'Beatriz Sousa',c:'Aveiro'},{n:'Inês Pereira',c:'Faro'},
+    {n:'Catarina Lopes',c:'Setúbal'},{n:'Joana Silva',c:'Évora'},{n:'Helena Cardoso',c:'Viseu'},
+    {n:'Carolina Mendes',c:'Leiria'},{n:'Mariana Tavares',c:'Funchal'},{n:'Filipa Gomes',c:'Guimarães'},
+    {n:'Diana Carvalho',c:'Viana do Castelo'},{n:'Patrícia Nunes',c:'Almada'},{n:'Daniela Faria',c:'Cascais'},
+    {n:'Margarida Pinto',c:'Sintra'},{n:'Vera Antunes',c:'Matosinhos'},{n:'Cláudia Henriques',c:'Aveiro'}
   ];
 
-  /* -------- Ícones SVG (estilo lucide) -------- */
-  var STEP_ICONS = [
-    /* 1 · Sparkle — ativar acesso */
-    '<svg viewBox="0 0 24 24"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><path d="m5.6 5.6 2.1 2.1"/><path d="m16.3 16.3 2.1 2.1"/><path d="m5.6 18.4 2.1-2.1"/><path d="m16.3 7.7 2.1-2.1"/></svg>',
-    /* 2 · Hanger — avaliar peças */
-    '<svg viewBox="0 0 24 24"><path d="M12 8a2 2 0 1 0-2-2"/><path d="M2 18a1 1 0 0 1-.5-1.86l10-6a1 1 0 0 1 1 0l10 6A1 1 0 0 1 22 18Z"/></svg>',
-    /* 3 · Wallet — saldo cresce */
-    '<svg viewBox="0 0 24 24"><path d="M20 12V8a2 2 0 0 0-2-2H5a2 2 0 0 1 0-4h14v4"/><path d="M3 6v13a2 2 0 0 0 2 2h15a2 2 0 0 0 2-2v-3"/><path d="M18 12h4v4h-4a2 2 0 0 1 0-4Z"/></svg>',
-    /* 4 · Banknote — levantar */
-    '<svg viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg>'
-  ];
+  function shuffle(a){var c=a.slice();for(var i=c.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=c[i];c[i]=c[j];c[j]=t;}return c;}
+  function rndAmt(){return 120+Math.floor(Math.random()*770);}
+  function initials(n){return n.split(' ').slice(0,2).map(function(p){return p[0];}).join('').toUpperCase();}
+  function eur(n){try{return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(n);}catch(e){return '€'+n;}}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
-  /* -------- Utilidades -------- */
-  function shuffle(a) {
-    var c = a.slice();
-    for (var i = c.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = c[i]; c[i] = c[j]; c[j] = t;
-    }
-    return c;
-  }
-  function randomAmount() { return 120 + Math.floor(Math.random() * 770); }
-  function initials(n) {
-    return n.split(' ').slice(0, 2).map(function (p) { return p[0]; }).join('').toUpperCase();
-  }
-  function formatEUR(n) {
-    try {
-      return new Intl.NumberFormat('pt-PT', {
-        style: 'currency', currency: 'EUR',
-        minimumFractionDigits: 0, maximumFractionDigits: 0
-      }).format(n);
-    } catch (e) { return '€' + n; }
-  }
-  function escapeHTML(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-  }
+  var TC = null;
+  function getTC(){if(TC&&document.body.contains(TC))return TC;TC=document.createElement('div');TC.className='shein-toast-container';TC.setAttribute('role','region');TC.setAttribute('aria-label','Notificações');TC.setAttribute('aria-live','polite');document.body.appendChild(TC);return TC;}
 
-  /* -------- 1. Toast Manager -------- */
-  var toastContainer = null;
-  function ensureToastContainer() {
-    if (toastContainer && document.body.contains(toastContainer)) return toastContainer;
-    toastContainer = document.createElement('div');
-    toastContainer.className = 'shein-toast-container';
-    toastContainer.setAttribute('role', 'region');
-    toastContainer.setAttribute('aria-label', 'Notificações');
-    toastContainer.setAttribute('aria-live', 'polite');
-    document.body.appendChild(toastContainer);
-    return toastContainer;
-  }
-
-  function buildToast(entry) {
-    var el = document.createElement('button');
-    el.type = 'button';
-    el.className = 'shein-toast shein-toast-in';
-    var first = entry.name.split(' ')[0];
-    el.innerHTML =
-      '<span class="shein-toast-avatar" aria-hidden="true">' + escapeHTML(initials(entry.name)) + '</span>' +
-      '<span class="shein-toast-body">' +
-        '<span class="shein-toast-title">' + escapeHTML(first) + ' de ' + escapeHTML(entry.city) + '</span>' +
-        '<span class="shein-toast-sub">acabou de levantar <strong>' + escapeHTML(formatEUR(entry.amount)) + '</strong></span>' +
-      '</span>' +
+  function buildToast(e){
+    var el=document.createElement('button');
+    el.type='button';el.className='shein-toast shein-toast-in';
+    var f=e.name.split(' ')[0];
+    el.innerHTML=
+      '<span class="shein-toast-avatar" aria-hidden="true">'+esc(initials(e.name))+'</span>'+
+      '<span class="shein-toast-body">'+
+        '<span class="shein-toast-title">'+esc(f)+' de '+esc(e.city)+'</span>'+
+        '<span class="shein-toast-sub">acabou de levantar <strong>'+esc(eur(e.amount))+'</strong></span>'+
+      '</span>'+
       '<span class="shein-toast-dot" aria-hidden="true"></span>';
-    el.setAttribute('aria-label', first + ' de ' + entry.city + ' acabou de levantar ' + formatEUR(entry.amount));
-    var done = false;
-    function dismiss() {
-      if (done) return; done = true;
-      el.classList.remove('shein-toast-in');
-      el.classList.add('shein-toast-out');
-      window.setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, TOAST_EXIT_DURATION);
-    }
-    el.addEventListener('click', dismiss);
-    window.setTimeout(dismiss, TOAST_DURATION);
+    el.setAttribute('aria-label',f+' de '+e.city+' acabou de levantar '+eur(e.amount));
+    var done=false;
+    function dismiss(){if(done)return;done=true;el.classList.remove('shein-toast-in');el.classList.add('shein-toast-out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},300);}
+    el.addEventListener('click',dismiss);
+    setTimeout(dismiss,5500);
     return el;
   }
-
-  function pushToast(entry) {
-    if (document.hidden) return;
-    ensureToastContainer().appendChild(buildToast(entry));
+  function pushToast(e){if(document.hidden)return;getTC().appendChild(buildToast(e));}
+  function startToasts(){
+    var q=shuffle(NAMES),i=0;
+    function tick(){var b=q[i++%q.length];pushToast({name:b.n,city:b.c,amount:rndAmt()});}
+    setTimeout(tick,5000);
+    setInterval(tick,15000);
   }
 
-  function startToastFeed() {
-    var queue = shuffle(NAMES);
-    var cursor = 0;
-    function tick() {
-      var base = queue[cursor++ % queue.length];
-      pushToast({ name: base.name, city: base.city, amount: randomAmount() });
-    }
-    window.setTimeout(tick, TOAST_FIRST_DELAY);
-    window.setInterval(tick, TOAST_INTERVAL);
-  }
-
-  /* -------- 2. Marcar step cards (identifica os 4 cards de Como Funciona) -------- */
-  function markStepCards() {
-    /* Cada step do "Como Funciona" é um wrapper com .animate-slide-up
-       que contém um badge .w-12.h-12.bg-secondary. Marcamos os
-       primeiros 4 (na ordem) para receber o tratamento de card. */
-    var nodes = document.querySelectorAll('.animate-slide-up');
-    var stepIdx = 0;
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      if (!el.querySelector(':scope > div > .w-12.h-12.bg-secondary')) continue;
-      if (!el.classList.contains('shein-step-card')) {
-        el.classList.add('shein-step-card');
-        el.setAttribute('data-step', String(stepIdx + 1));
-      }
-      stepIdx++;
+  /* Marca as 4 linhas de "Como Funciona" (sem mexer no design original) */
+  function markStepRows(){
+    var nodes=document.querySelectorAll('.animate-slide-up');
+    for(var i=0;i<nodes.length;i++){
+      var el=nodes[i];
+      if(!el.querySelector(':scope > div > .w-12.h-12.bg-secondary'))continue;
+      if(!el.classList.contains('shein-step-row'))el.classList.add('shein-step-row');
     }
   }
 
-  /* -------- 3. Injeção de ícones SVG nos badges -------- */
-  function enhanceStepCards() {
-    var badges = document.querySelectorAll('.shein-step-card .w-12.h-12.bg-secondary');
-    for (var i = 0; i < badges.length; i++) {
-      var badge = badges[i];
-      if (badge.dataset.sheinIcon) continue;
-      var svgMarkup = STEP_ICONS[i % STEP_ICONS.length];
-      var wrap = document.createElement('span');
-      wrap.style.display = 'contents';
-      wrap.innerHTML = svgMarkup;
-      var svg = wrap.querySelector('svg');
-      if (svg) {
-        badge.insertBefore(svg, badge.firstChild);
-        badge.dataset.sheinIcon = '1';
+  /* IntersectionObserver: reveal fade-in-up */
+  var IO=null;
+  function getIO(){if(IO||typeof IntersectionObserver==='undefined')return IO;IO=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.classList.add('shein-revealed');IO.unobserve(es[i].target);}}},{threshold:.15,rootMargin:'0px 0px -40px 0px'});return IO;}
+  function observeRows(){var io=getIO();if(!io)return;var ns=document.querySelectorAll('.shein-step-row');for(var i=0;i<ns.length;i++){var el=ns[i];if(el.dataset.sheinObs)continue;el.dataset.sheinObs='1';io.observe(el);}}
+
+  /* Fade-in cascata da hero */
+  function applyHeroEnter(){
+    var heros=document.querySelectorAll('[class*="min-h-screen"][class*="flex-col"]');
+    for(var h=0;h<heros.length;h++){
+      var hero=heros[h];
+      if(hero.dataset.sheinEntered)continue;
+      hero.dataset.sheinEntered='1';
+      var kids=hero.children,d=1;
+      for(var i=0;i<kids.length&&d<=6;i++){
+        var k=kids[i];if(!k.getBoundingClientRect)continue;
+        k.classList.add('shein-pop-in','shein-pop-in-'+d);d++;
       }
     }
   }
 
-  /* -------- 4. IntersectionObserver: reveal fade-in-up -------- */
-  var revealObserver = null;
-  function ensureRevealObserver() {
-    if (revealObserver || typeof IntersectionObserver === 'undefined') return revealObserver;
-    revealObserver = new IntersectionObserver(function (entries) {
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].isIntersecting) {
-          entries[i].target.classList.add('shein-revealed');
-          revealObserver.unobserve(entries[i].target);
-        }
-      }
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-    return revealObserver;
-  }
-  function observeStepCards() {
-    var io = ensureRevealObserver();
-    if (!io) return;
-    var nodes = document.querySelectorAll('.shein-step-card');
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      if (el.dataset.sheinObserved) continue;
-      el.dataset.sheinObserved = '1';
-      io.observe(el);
-    }
-  }
+  function watch(){if(typeof MutationObserver==='undefined')return;var mo=new MutationObserver(function(){markStepRows();observeRows();applyHeroEnter();});mo.observe(document.body,{childList:true,subtree:true});}
 
-  /* -------- 5. Fade-in-up da página (cascata nos blocos hero) -------- */
-  function applyPageEnter() {
-    /* Encontra os "min-h-screen flex flex-col" (hero do app)
-       e aplica fade-in-up cascateado aos filhos diretos. */
-    var heros = document.querySelectorAll('[class*="min-h-screen"][class*="flex-col"]');
-    for (var h = 0; h < heros.length; h++) {
-      var hero = heros[h];
-      if (hero.dataset.sheinEntered) continue;
-      hero.dataset.sheinEntered = '1';
-      var kids = hero.children;
-      var delay = 1;
-      for (var i = 0; i < kids.length && delay <= 6; i++) {
-        var k = kids[i];
-        if (!k.getBoundingClientRect) continue;
-        k.classList.add('shein-pop-in', 'shein-pop-in-' + delay);
-        delay++;
-      }
-    }
-  }
+  function init(){injectCSS();markStepRows();observeRows();applyHeroEnter();startToasts();watch();}
 
-  /* -------- 6. MutationObserver: lida com mudanças de rota React -------- */
-  function watchReactUpdates() {
-    if (typeof MutationObserver === 'undefined') return;
-    var mo = new MutationObserver(function () {
-      markStepCards();
-      enhanceStepCards();
-      observeStepCards();
-      applyPageEnter();
-    });
-    mo.observe(document.body, { childList: true, subtree: true });
-  }
-
-  /* -------- Bootstrap -------- */
-  function init() {
-    injectCSS();
-    markStepCards();
-    enhanceStepCards();
-    observeStepCards();
-    applyPageEnter();
-    startToastFeed();
-    watchReactUpdates();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      window.setTimeout(init, 80); /* deixa o React pintar */
-    });
-  } else {
-    window.setTimeout(init, 80);
-  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(init,80);});}
+  else{setTimeout(init,80);}
 })();
