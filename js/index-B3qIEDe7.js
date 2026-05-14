@@ -23562,68 +23562,37 @@ const Uo = [{
 });
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
-/* SHEIN · Premium Enhancements v2 — preserva o design original */
+/* SHEIN · Premium Enhancements v3
+   - Tudo do v2 (sombras, fade-in, toasts canto superior direito, reveal IO)
+   - Substitui completamente a tela /evaluacion com:
+     · 12 looks (€15–€90 intercalados)
+     · 3 critérios: estrelas, slider, textarea (min 50 chars)
+     · Progress bar no topo
+     · Contador animado do saldo
+     · Loading 1.5s "Validando com a base de dados..." */
 ;(function () {
   'use strict';
 
+  /* =========================================================
+     CSS
+     ========================================================= */
   var CSS = [
-    /* Keyframes */
+    /* === v2 (mantido) === */
     '@keyframes sheinFadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}',
     '@keyframes sheinToastIn{0%{opacity:0;transform:translateY(-110%) scale(.94)}60%{opacity:1;transform:translateY(4px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}',
     '@keyframes sheinToastOut{to{opacity:0;transform:translateY(-110%)}}',
     '@keyframes sheinDot{0%,100%{opacity:1}50%{opacity:.45}}',
-
-    /* 1. Sombras premium multi-layer nos cards do marquee */
-    '.animate-scroll-left>div,.animate-scroll-right>div{',
-    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 16px -2px rgba(0,0,0,.08),0 14px 28px -6px rgba(0,0,0,.05) !important;',
-    '  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s cubic-bezier(.22,1,.36,1);',
-    '}',
-
-    /* 2. Fade-in cascata da hero (entrada da página) */
-    '.shein-pop-in{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both !important}',
-    '.shein-pop-in-1{animation-delay:.04s !important}',
-    '.shein-pop-in-2{animation-delay:.12s !important}',
-    '.shein-pop-in-3{animation-delay:.2s !important}',
-    '.shein-pop-in-4{animation-delay:.28s !important}',
-    '.shein-pop-in-5{animation-delay:.36s !important}',
-    '.shein-pop-in-6{animation-delay:.44s !important}',
-
-    /* 3. Step cards — mantém 100% o design original, só adiciona reveal + sombra subtil no badge */
-    '.shein-step-row:not(.shein-revealed){opacity:0 !important;transform:translateY(20px) !important;animation:none !important}',
-    '.shein-step-row.shein-revealed{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both !important}',
-    '.shein-step-row .w-12.h-12.bg-secondary{',
-    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 3px 8px -2px rgba(0,0,0,.05) !important;',
-    '  transition:transform .25s ease,box-shadow .25s ease;',
-    '}',
-    '.shein-step-row:hover .w-12.h-12.bg-secondary{',
-    '  transform:translateY(-1px);',
-    '  box-shadow:0 2px 4px rgba(0,0,0,.06),0 6px 14px -4px rgba(0,0,0,.08) !important;',
-    '}',
-
-    /* 4. Toast container — canto SUPERIOR direito */
-    '.shein-toast-container{',
-    '  position:fixed;top:16px;right:16px;z-index:9999;',
-    '  display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end;',
-    '  max-width:calc(100vw - 32px);',
-    '}',
-    '@media (max-width:640px){',
-    '  .shein-toast-container{top:12px;right:12px;left:auto;max-width:calc(100vw - 24px)}',
-    '}',
-    '.shein-toast{',
-    '  pointer-events:auto;width:100%;max-width:320px;',
-    '  display:flex;align-items:center;gap:10px;',
-    '  padding:10px 12px;border-radius:14px;',
-    '  background:rgba(255,255,255,.96);',
-    '  -webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);',
-    '  border:1px solid rgba(0,0,0,.05);',
-    '  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -4px rgba(0,0,0,.12),0 16px 32px -8px rgba(0,0,0,.08);',
-    '  cursor:pointer;text-align:left;color:#0a0a0a;font-family:inherit;transform-origin:top right;',
-    '}',
-    '.shein-toast-avatar{',
-    '  flex-shrink:0;width:32px;height:32px;border-radius:999px;',
-    '  background:#f4f4f5;border:1px solid rgba(0,0,0,.06);',
-    '  display:grid;place-items:center;font-size:11px;font-weight:600;color:#0a0a0a;letter-spacing:.02em;',
-    '}',
+    '.animate-scroll-left>div,.animate-scroll-right>div{box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 16px -2px rgba(0,0,0,.08),0 14px 28px -6px rgba(0,0,0,.05)!important;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s cubic-bezier(.22,1,.36,1)}',
+    '.shein-pop-in{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both!important}',
+    '.shein-pop-in-1{animation-delay:.04s!important}.shein-pop-in-2{animation-delay:.12s!important}.shein-pop-in-3{animation-delay:.2s!important}.shein-pop-in-4{animation-delay:.28s!important}.shein-pop-in-5{animation-delay:.36s!important}.shein-pop-in-6{animation-delay:.44s!important}',
+    '.shein-step-row:not(.shein-revealed){opacity:0!important;transform:translateY(20px)!important;animation:none!important}',
+    '.shein-step-row.shein-revealed{animation:sheinFadeUp .65s cubic-bezier(.22,1,.36,1) both!important}',
+    '.shein-step-row .w-12.h-12.bg-secondary{box-shadow:0 1px 2px rgba(0,0,0,.04),0 3px 8px -2px rgba(0,0,0,.05)!important;transition:transform .25s ease,box-shadow .25s ease}',
+    '.shein-step-row:hover .w-12.h-12.bg-secondary{transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 6px 14px -4px rgba(0,0,0,.08)!important}',
+    '.shein-toast-container{position:fixed;top:16px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end;max-width:calc(100vw - 32px)}',
+    '@media(max-width:640px){.shein-toast-container{top:12px;right:12px;left:auto;max-width:calc(100vw - 24px)}}',
+    '.shein-toast{pointer-events:auto;width:100%;max-width:320px;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -4px rgba(0,0,0,.12),0 16px 32px -8px rgba(0,0,0,.08);cursor:pointer;text-align:left;color:#0a0a0a;font-family:inherit;transform-origin:top right}',
+    '.shein-toast-avatar{flex-shrink:0;width:32px;height:32px;border-radius:999px;background:#f4f4f5;border:1px solid rgba(0,0,0,.06);display:grid;place-items:center;font-size:11px;font-weight:600;color:#0a0a0a;letter-spacing:.02em}',
     '.shein-toast-body{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}',
     '.shein-toast-title{font-size:13px;font-weight:600;color:#0a0a0a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
     '.shein-toast-sub{font-size:11.5px;color:rgba(0,0,0,.5);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
@@ -23632,97 +23601,356 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '.shein-toast-in{animation:sheinToastIn .5s cubic-bezier(.22,1,.36,1)}',
     '.shein-toast-out{animation:sheinToastOut .3s ease-in forwards}',
 
-    '@media (prefers-reduced-motion:reduce){',
-    '  .shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed{animation:none !important;opacity:1 !important;transform:none !important}',
-    '  .shein-step-row:not(.shein-revealed){opacity:1 !important;transform:none !important}',
-    '}'
+    /* === v3: tela de avaliação === */
+    '@keyframes seSpin{to{transform:rotate(360deg)}}',
+    '@keyframes seFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}',
+    '@keyframes sePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.94);opacity:.7}}',
+    '#se-overlay{position:fixed;inset:0;z-index:9000;background:#fafafa;overflow-y:auto;font-family:Inter,system-ui,sans-serif;color:#0a0a0a;-webkit-overflow-scrolling:touch}',
+    '#se-overlay *{box-sizing:border-box}',
+    '.se-header{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 16px;background:rgba(250,250,250,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.06);z-index:5}',
+    '.se-back{background:none;border:0;font:inherit;display:flex;align-items:center;gap:4px;font-size:13px;color:rgba(0,0,0,.6);cursor:pointer;padding:6px 0}',
+    '.se-back:hover{color:#0a0a0a}',
+    '.se-logo{font-weight:800;letter-spacing:.18em;font-size:14px}',
+    '.se-balance{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);font-size:13px;font-weight:700;color:#15803d;font-variant-numeric:tabular-nums;line-height:1}',
+    '.se-balance-icon{font-size:14px;line-height:1}',
+    '.se-balance.bump{animation:sePulse .35s ease}',
+    '.se-progress{height:3px;background:rgba(0,0,0,.06);overflow:hidden}',
+    '.se-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#10b981);transition:width .6s cubic-bezier(.22,1,.36,1)}',
+    '.se-main{max-width:480px;margin:0 auto;padding:18px 16px 48px}',
+    '.se-look-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}',
+    '.se-look-num{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.5)}',
+    '.se-look-reward{font-size:13.5px;font-weight:700;color:#15803d;font-variant-numeric:tabular-nums}',
+    '.se-look-img{aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#f4f4f5;margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -4px rgba(0,0,0,.1),0 16px 32px -8px rgba(0,0,0,.06);position:relative}',
+    '.se-look-img img{width:100%;height:100%;object-fit:cover;display:block;animation:seFadeUp .5s cubic-bezier(.22,1,.36,1)}',
+    '.se-card{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);padding:14px;margin-bottom:10px;box-shadow:0 1px 2px rgba(0,0,0,.04)}',
+    '.se-card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}',
+    '.se-card-title{font-size:13.5px;font-weight:600;color:#0a0a0a;margin:0 0 4px;line-height:1.35}',
+    '.se-card-title strong{font-weight:800}',
+    '.se-card-desc{font-size:11.5px;color:rgba(0,0,0,.5);margin:0 0 10px;line-height:1.4}',
+    /* Stars */
+    '.se-stars{display:flex;gap:4px;justify-content:space-between}',
+    '.se-star{flex:1;padding:8px 0;font-size:30px;color:rgba(0,0,0,.15);background:none;border:0;cursor:pointer;line-height:1;transition:transform .15s ease,color .2s ease}',
+    '.se-star:hover{transform:scale(1.15)}',
+    '.se-star.active{color:#f59e0b}',
+    /* Slider */
+    '.se-slider-val{display:inline-flex;align-items:center;justify-content:center;min-width:34px;font-size:12px;font-weight:700;padding:3px 9px;background:#0a0a0a;color:#fff;border-radius:999px;font-variant-numeric:tabular-nums;line-height:1}',
+    '.se-slider{width:100%;height:6px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,#0a0a0a 0%,#0a0a0a 50%,rgba(0,0,0,.08) 50%,rgba(0,0,0,.08) 100%);border-radius:999px;outline:none;cursor:pointer;margin:6px 0 2px}',
+    '.se-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:999px;background:#0a0a0a;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}',
+    '.se-slider::-moz-range-thumb{width:22px;height:22px;border-radius:999px;background:#0a0a0a;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}',
+    '.se-slider-ends{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(0,0,0,.4);margin-top:4px;font-weight:500}',
+    /* Text */
+    '.se-text{width:100%;min-height:80px;padding:10px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:#fafafa;font:13px/1.5 inherit;color:#0a0a0a;resize:vertical;outline:none;transition:border-color .2s ease}',
+    '.se-text:focus{border-color:rgba(0,0,0,.4);background:#fff}',
+    '.se-text-meta{display:flex;justify-content:space-between;font-size:10.5px;color:rgba(0,0,0,.45);margin-top:6px}',
+    '.se-chars{font-weight:600;font-variant-numeric:tabular-nums}',
+    '.se-chars.ok{color:#15803d}',
+    /* Submit */
+    '.se-submit{display:block;width:100%;padding:15px;margin-top:14px;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:#0a0a0a;color:#fff;border:0;border-radius:14px;cursor:pointer;transition:transform .2s ease,opacity .2s ease,background .2s ease;box-shadow:0 8px 24px -4px rgba(0,0,0,.25)}',
+    '.se-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 12px 28px -4px rgba(0,0,0,.32)}',
+    '.se-submit:active:not(:disabled){transform:scale(.98)}',
+    '.se-submit:disabled{background:rgba(0,0,0,.12);color:rgba(0,0,0,.4);cursor:not-allowed;box-shadow:none}',
+    /* Loading */
+    '.se-loading{position:fixed;inset:0;z-index:9100;background:rgba(250,250,250,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;animation:seFadeUp .25s ease}',
+    '.se-loading.hidden{display:none}',
+    '.se-loading-card{background:#fff;border-radius:18px;padding:24px 26px;max-width:280px;text-align:center;box-shadow:0 16px 40px rgba(0,0,0,.16)}',
+    '.se-spinner{width:34px;height:34px;border:3px solid rgba(0,0,0,.08);border-top-color:#0a0a0a;border-radius:50%;margin:0 auto 14px;animation:seSpin .8s linear infinite}',
+    '.se-loading-text{font-size:14px;font-weight:600;margin:0 0 4px}',
+    '.se-loading-sub{font-size:11px;color:rgba(0,0,0,.5);margin:0}',
+    /* Complete */
+    '.se-complete{position:fixed;inset:0;z-index:9200;background:rgba(0,0,0,.4);display:grid;place-items:center;padding:20px}',
+    '.se-complete.hidden{display:none}',
+    '.se-complete-card{background:#fff;border-radius:22px;padding:28px 26px;max-width:360px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25);animation:seFadeUp .5s cubic-bezier(.22,1,.36,1)}',
+    '.se-complete-icon{width:54px;height:54px;background:linear-gradient(135deg,#22c55e,#10b981);color:#fff;font-size:26px;font-weight:700;border-radius:999px;margin:0 auto 14px;display:grid;place-items:center;box-shadow:0 8px 24px rgba(34,197,94,.3)}',
+    '.se-complete h2{font-size:20px;font-weight:800;margin:0 0 6px;letter-spacing:-.01em}',
+    '.se-complete p{font-size:13.5px;color:rgba(0,0,0,.6);margin:0 0 20px;line-height:1.5}',
+    '.se-complete strong{color:#15803d;font-weight:700}',
+    '.se-cta{display:inline-flex;align-items:center;gap:6px;padding:14px 22px;background:#0a0a0a;color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;border-radius:14px;border:0;cursor:pointer;box-shadow:0 8px 24px -4px rgba(0,0,0,.3)}',
+    '.se-cta:hover{transform:translateY(-1px)}',
+    '.se-cta:active{transform:scale(.98)}',
+    '@media(prefers-reduced-motion:reduce){.shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed,.se-progress-fill,.se-spinner{animation:none!important;transition:none!important}}'
   ].join('');
 
-  function injectCSS() {
-    if (document.getElementById('shein-premium-style')) return;
-    var s = document.createElement('style');
-    s.id = 'shein-premium-style';
-    s.appendChild(document.createTextNode(CSS));
-    document.head.appendChild(s);
-  }
+  function injectCSS(){if(document.getElementById('shein-premium-style'))return;var s=document.createElement('style');s.id='shein-premium-style';s.appendChild(document.createTextNode(CSS));document.head.appendChild(s);}
 
-  var NAMES = [
-    {n:'Rita Almeida',c:'Braga'},{n:'Sofia Marques',c:'Lisboa'},{n:'Marta Costa',c:'Porto'},
-    {n:'Ana Ribeiro',c:'Coimbra'},{n:'Beatriz Sousa',c:'Aveiro'},{n:'Inês Pereira',c:'Faro'},
-    {n:'Catarina Lopes',c:'Setúbal'},{n:'Joana Silva',c:'Évora'},{n:'Helena Cardoso',c:'Viseu'},
-    {n:'Carolina Mendes',c:'Leiria'},{n:'Mariana Tavares',c:'Funchal'},{n:'Filipa Gomes',c:'Guimarães'},
-    {n:'Diana Carvalho',c:'Viana do Castelo'},{n:'Patrícia Nunes',c:'Almada'},{n:'Daniela Faria',c:'Cascais'},
-    {n:'Margarida Pinto',c:'Sintra'},{n:'Vera Antunes',c:'Matosinhos'},{n:'Cláudia Henriques',c:'Aveiro'}
-  ];
-
+  /* =========================================================
+     v2 — Toasts + step rows + hero fade-in
+     ========================================================= */
+  var NAMES=[{n:'Rita Almeida',c:'Braga'},{n:'Sofia Marques',c:'Lisboa'},{n:'Marta Costa',c:'Porto'},{n:'Ana Ribeiro',c:'Coimbra'},{n:'Beatriz Sousa',c:'Aveiro'},{n:'Inês Pereira',c:'Faro'},{n:'Catarina Lopes',c:'Setúbal'},{n:'Joana Silva',c:'Évora'},{n:'Helena Cardoso',c:'Viseu'},{n:'Carolina Mendes',c:'Leiria'},{n:'Mariana Tavares',c:'Funchal'},{n:'Filipa Gomes',c:'Guimarães'},{n:'Diana Carvalho',c:'Viana do Castelo'},{n:'Patrícia Nunes',c:'Almada'},{n:'Daniela Faria',c:'Cascais'},{n:'Margarida Pinto',c:'Sintra'},{n:'Vera Antunes',c:'Matosinhos'},{n:'Cláudia Henriques',c:'Aveiro'}];
   function shuffle(a){var c=a.slice();for(var i=c.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=c[i];c[i]=c[j];c[j]=t;}return c;}
   function rndAmt(){return 120+Math.floor(Math.random()*770);}
-  function initials(n){return n.split(' ').slice(0,2).map(function(p){return p[0];}).join('').toUpperCase();}
+  function inits(n){return n.split(' ').slice(0,2).map(function(p){return p[0];}).join('').toUpperCase();}
   function eur(n){try{return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',minimumFractionDigits:0,maximumFractionDigits:0}).format(n);}catch(e){return '€'+n;}}
+  function eur2(n){try{return new Intl.NumberFormat('pt-PT',{style:'currency',currency:'EUR',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);}catch(e){return '€'+n.toFixed(2);}}
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
-  var TC = null;
+  var TC=null;
   function getTC(){if(TC&&document.body.contains(TC))return TC;TC=document.createElement('div');TC.className='shein-toast-container';TC.setAttribute('role','region');TC.setAttribute('aria-label','Notificações');TC.setAttribute('aria-live','polite');document.body.appendChild(TC);return TC;}
-
-  function buildToast(e){
-    var el=document.createElement('button');
-    el.type='button';el.className='shein-toast shein-toast-in';
-    var f=e.name.split(' ')[0];
-    el.innerHTML=
-      '<span class="shein-toast-avatar" aria-hidden="true">'+esc(initials(e.name))+'</span>'+
-      '<span class="shein-toast-body">'+
-        '<span class="shein-toast-title">'+esc(f)+' de '+esc(e.city)+'</span>'+
-        '<span class="shein-toast-sub">acabou de levantar <strong>'+esc(eur(e.amount))+'</strong></span>'+
-      '</span>'+
-      '<span class="shein-toast-dot" aria-hidden="true"></span>';
-    el.setAttribute('aria-label',f+' de '+e.city+' acabou de levantar '+eur(e.amount));
-    var done=false;
-    function dismiss(){if(done)return;done=true;el.classList.remove('shein-toast-in');el.classList.add('shein-toast-out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},300);}
-    el.addEventListener('click',dismiss);
-    setTimeout(dismiss,5500);
-    return el;
-  }
+  function buildToast(e){var el=document.createElement('button');el.type='button';el.className='shein-toast shein-toast-in';var f=e.name.split(' ')[0];el.innerHTML='<span class="shein-toast-avatar" aria-hidden="true">'+esc(inits(e.name))+'</span><span class="shein-toast-body"><span class="shein-toast-title">'+esc(f)+' de '+esc(e.city)+'</span><span class="shein-toast-sub">acabou de levantar <strong>'+esc(eur(e.amount))+'</strong></span></span><span class="shein-toast-dot" aria-hidden="true"></span>';var done=false;function dismiss(){if(done)return;done=true;el.classList.remove('shein-toast-in');el.classList.add('shein-toast-out');setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},300);}el.addEventListener('click',dismiss);setTimeout(dismiss,5500);return el;}
   function pushToast(e){if(document.hidden)return;getTC().appendChild(buildToast(e));}
-  function startToasts(){
-    var q=shuffle(NAMES),i=0;
-    function tick(){var b=q[i++%q.length];pushToast({name:b.n,city:b.c,amount:rndAmt()});}
-    setTimeout(tick,5000);
-    setInterval(tick,15000);
-  }
+  function startToasts(){var q=shuffle(NAMES),i=0;function tick(){var b=q[i++%q.length];pushToast({name:b.n,city:b.c,amount:rndAmt()});}setTimeout(tick,5000);setInterval(tick,15000);}
 
-  /* Marca as 4 linhas de "Como Funciona" (sem mexer no design original) */
-  function markStepRows(){
-    var nodes=document.querySelectorAll('.animate-slide-up');
-    for(var i=0;i<nodes.length;i++){
-      var el=nodes[i];
-      if(!el.querySelector(':scope > div > .w-12.h-12.bg-secondary'))continue;
-      if(!el.classList.contains('shein-step-row'))el.classList.add('shein-step-row');
-    }
-  }
-
-  /* IntersectionObserver: reveal fade-in-up */
+  function markStepRows(){var ns=document.querySelectorAll('.animate-slide-up');for(var i=0;i<ns.length;i++){var el=ns[i];if(!el.querySelector(':scope > div > .w-12.h-12.bg-secondary'))continue;if(!el.classList.contains('shein-step-row'))el.classList.add('shein-step-row');}}
   var IO=null;
   function getIO(){if(IO||typeof IntersectionObserver==='undefined')return IO;IO=new IntersectionObserver(function(es){for(var i=0;i<es.length;i++){if(es[i].isIntersecting){es[i].target.classList.add('shein-revealed');IO.unobserve(es[i].target);}}},{threshold:.15,rootMargin:'0px 0px -40px 0px'});return IO;}
   function observeRows(){var io=getIO();if(!io)return;var ns=document.querySelectorAll('.shein-step-row');for(var i=0;i<ns.length;i++){var el=ns[i];if(el.dataset.sheinObs)continue;el.dataset.sheinObs='1';io.observe(el);}}
+  function applyHeroEnter(){var hs=document.querySelectorAll('[class*="min-h-screen"][class*="flex-col"]');for(var h=0;h<hs.length;h++){var hero=hs[h];if(hero.dataset.sheinEntered)continue;hero.dataset.sheinEntered='1';var k=hero.children,d=1;for(var i=0;i<k.length&&d<=6;i++){var x=k[i];if(!x.getBoundingClientRect)continue;x.classList.add('shein-pop-in','shein-pop-in-'+d);d++;}}}
 
-  /* Fade-in cascata da hero */
-  function applyHeroEnter(){
-    var heros=document.querySelectorAll('[class*="min-h-screen"][class*="flex-col"]');
-    for(var h=0;h<heros.length;h++){
-      var hero=heros[h];
-      if(hero.dataset.sheinEntered)continue;
-      hero.dataset.sheinEntered='1';
-      var kids=hero.children,d=1;
-      for(var i=0;i<kids.length&&d<=6;i++){
-        var k=kids[i];if(!k.getBoundingClientRect)continue;
-        k.classList.add('shein-pop-in','shein-pop-in-'+d);d++;
+  /* =========================================================
+     v3 — Tela de avaliação custom (sobre /evaluacion)
+     ========================================================= */
+  /* 12 looks · valores entre €15-€90 intercalados (variação não-monotónica) */
+  var REWARDS=[89,78,87,65,90,75,88,72,86,80,89,88];
+  var TOTAL_LOOKS=12;
+  var IMG_CACHE=[];
+  var EVAL_ROUTES=/^\/evaluacion(490|1990|2990)?\/?$/;
+
+  function cacheImgs(){
+    var imgs=document.querySelectorAll('img[src*="/assets/img"]');
+    var seen={};
+    var out=[];
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].src;
+      if(!seen[s]){seen[s]=1;out.push(s);}
+    }
+    if(out.length>IMG_CACHE.length)IMG_CACHE=out;
+  }
+
+  var ev=null; /* state object */
+  function newEvState(){
+    return {idx:0,balance:0,look:{stars:0,slider:50,text:''},evals:[]};
+  }
+
+  /* Counter animation com easing */
+  function animateCounter(el,from,to,dur){
+    var start=performance.now();
+    function tick(now){
+      var t=Math.min(1,(now-start)/dur);
+      var ease=1-Math.pow(1-t,3);
+      el.textContent=eur2(from+(to-from)*ease);
+      if(t<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function setProgress(){
+    var pct=Math.min(100,(ev.idx/TOTAL_LOOKS)*100);
+    var p=document.getElementById('se-prog');
+    if(p)p.style.width=pct+'%';
+  }
+
+  function setSliderTrack(slider){
+    var v=parseInt(slider.value,10);
+    slider.style.background='linear-gradient(90deg,#0a0a0a 0%,#0a0a0a '+v+'%,rgba(0,0,0,.08) '+v+'%,rgba(0,0,0,.08) 100%)';
+  }
+
+  function renderLook(){
+    if(!ev)return;
+    var i=ev.idx;
+    var img=IMG_CACHE[i%IMG_CACHE.length]||IMG_CACHE[0]||'';
+    var rew=REWARDS[i%REWARDS.length];
+    var imgEl=document.getElementById('se-img');
+    if(imgEl){
+      imgEl.style.animation='none';
+      /* force reflow para reanimar */
+      void imgEl.offsetWidth;
+      imgEl.style.animation='';
+      imgEl.src=img;
+    }
+    document.getElementById('se-look-n').textContent=i+1;
+    document.getElementById('se-look-r').textContent=rew;
+    setProgress();
+    ev.look={stars:0,slider:50,text:''};
+    var stars=document.querySelectorAll('.se-star');
+    for(var s=0;s<stars.length;s++)stars[s].classList.remove('active');
+    var sl=document.getElementById('se-slider');
+    sl.value=50;
+    document.getElementById('se-slider-val').textContent='50';
+    setSliderTrack(sl);
+    var ta=document.getElementById('se-text');
+    ta.value='';
+    var ch=document.getElementById('se-chars');
+    ch.textContent='0 / 50';
+    ch.classList.remove('ok');
+    validate();
+    var ov=document.getElementById('se-overlay');
+    if(ov)ov.scrollTop=0;
+  }
+
+  function validate(){
+    var btn=document.getElementById('se-submit');
+    if(!btn||!ev)return;
+    var ok=ev.look.stars>=1&&ev.look.text.length>=50;
+    btn.disabled=!ok;
+  }
+
+  function submit(){
+    if(!ev)return;
+    var rew=REWARDS[ev.idx%REWARDS.length];
+    var loading=document.getElementById('se-loading');
+    loading.classList.remove('hidden');
+    setTimeout(function(){
+      var balEl=document.getElementById('se-balance');
+      var balWrap=document.querySelector('.se-balance');
+      var from=ev.balance;
+      var to=ev.balance+rew;
+      animateCounter(balEl,from,to,900);
+      if(balWrap){balWrap.classList.add('bump');setTimeout(function(){balWrap.classList.remove('bump');},400);}
+      ev.balance=to;
+      ev.evals.push({stars:ev.look.stars,slider:ev.look.slider,text:ev.look.text,reward:rew});
+      ev.idx++;
+      loading.classList.add('hidden');
+      if(ev.idx>=TOTAL_LOOKS){
+        setProgress();
+        document.getElementById('se-final').textContent=eur2(ev.balance);
+        setTimeout(function(){
+          document.getElementById('se-complete').classList.remove('hidden');
+        },500);
+      }else{
+        renderLook();
       }
+    },1500);
+  }
+
+  function buildOverlay(){
+    if(document.getElementById('se-overlay'))return;
+    cacheImgs();
+    if(IMG_CACHE.length<1){setTimeout(buildOverlay,250);return;}
+    ev=newEvState();
+    var ov=document.createElement('div');
+    ov.id='se-overlay';
+    var starsHTML='';
+    for(var s=1;s<=5;s++){
+      starsHTML+='<button type="button" data-star="'+s+'" class="se-star" aria-label="'+s+' estrelas">★</button>';
+    }
+    ov.innerHTML=
+      '<header class="se-header">'+
+        '<button class="se-back" type="button">‹ Voltar</button>'+
+        '<span class="se-logo">SHEIN</span>'+
+        '<div class="se-balance"><span class="se-balance-icon">€</span><span class="se-balance-val" id="se-balance">0,00</span></div>'+
+      '</header>'+
+      '<div class="se-progress"><div class="se-progress-fill" id="se-prog"></div></div>'+
+      '<main class="se-main">'+
+        '<div class="se-look-meta">'+
+          '<span class="se-look-num">Look <span id="se-look-n">1</span> de '+TOTAL_LOOKS+'</span>'+
+          '<span class="se-look-reward">+ €<span id="se-look-r">'+REWARDS[0]+'</span>,00</span>'+
+        '</div>'+
+        '<div class="se-look-img"><img id="se-img" alt="Look atual" /></div>'+
+
+        '<article class="se-card">'+
+          '<p class="se-card-title">Como avalias o <strong>design</strong>?</p>'+
+          '<p class="se-card-desc">Toca em estrelas — 1 (mau) a 5 (excelente)</p>'+
+          '<div class="se-stars" id="se-stars">'+starsHTML+'</div>'+
+        '</article>'+
+
+        '<article class="se-card">'+
+          '<div class="se-card-head"><p class="se-card-title">Conforto e qualidade</p><span class="se-slider-val" id="se-slider-val">50</span></div>'+
+          '<input type="range" min="0" max="100" value="50" class="se-slider" id="se-slider" aria-label="Conforto e qualidade" />'+
+          '<div class="se-slider-ends"><span>Mau</span><span>Ótimo</span></div>'+
+        '</article>'+
+
+        '<article class="se-card">'+
+          '<p class="se-card-title">Porque <strong>comprarias</strong> esta peça?</p>'+
+          '<p class="se-card-desc">Mínimo 50 caracteres — a tua opinião é o que dá valor à avaliação</p>'+
+          '<textarea id="se-text" class="se-text" placeholder="Esta peça chamou-me a atenção porque…" maxlength="500" rows="3"></textarea>'+
+          '<div class="se-text-meta"><span id="se-chars" class="se-chars">0 / 50</span><span>caracteres mínimos</span></div>'+
+        '</article>'+
+
+        '<button type="button" id="se-submit" class="se-submit" disabled>Enviar avaliação</button>'+
+      '</main>'+
+
+      '<div id="se-loading" class="se-loading hidden">'+
+        '<div class="se-loading-card">'+
+          '<div class="se-spinner"></div>'+
+          '<p class="se-loading-text">Validando com a base de dados…</p>'+
+          '<p class="se-loading-sub">A confirmar com servidores Shein</p>'+
+        '</div>'+
+      '</div>'+
+
+      '<div id="se-complete" class="se-complete hidden">'+
+        '<div class="se-complete-card">'+
+          '<div class="se-complete-icon">✓</div>'+
+          '<h2>Avaliações completas</h2>'+
+          '<p>Acumulaste <strong id="se-final">€0,00</strong> em <strong>'+TOTAL_LOOKS+' avaliações</strong>. Agora podes levantar.</p>'+
+          '<button type="button" id="se-go" class="se-cta">Levantar agora ›</button>'+
+        '</div>'+
+      '</div>';
+    document.body.appendChild(ov);
+    bindEvents();
+    renderLook();
+  }
+
+  function bindEvents(){
+    var ov=document.getElementById('se-overlay');
+    ov.querySelector('.se-back').addEventListener('click',function(){
+      history.back();
+    });
+    var stars=ov.querySelectorAll('.se-star');
+    for(var i=0;i<stars.length;i++){
+      stars[i].addEventListener('click',function(e){
+        var n=parseInt(e.currentTarget.dataset.star,10);
+        ev.look.stars=n;
+        for(var j=0;j<stars.length;j++)stars[j].classList.toggle('active',j<n);
+        validate();
+      });
+    }
+    var slider=ov.querySelector('#se-slider');
+    var sv=ov.querySelector('#se-slider-val');
+    slider.addEventListener('input',function(){
+      ev.look.slider=parseInt(slider.value,10);
+      sv.textContent=slider.value;
+      setSliderTrack(slider);
+    });
+    setSliderTrack(slider);
+    var ta=ov.querySelector('#se-text');
+    var ch=ov.querySelector('#se-chars');
+    ta.addEventListener('input',function(){
+      ev.look.text=ta.value;
+      var len=ta.value.length;
+      ch.textContent=len+' / 50';
+      ch.classList.toggle('ok',len>=50);
+      validate();
+    });
+    ov.querySelector('#se-submit').addEventListener('click',submit);
+    ov.querySelector('#se-go').addEventListener('click',function(){
+      window.location.href='/confirmacao-taxa';
+    });
+  }
+
+  function destroyOverlay(){
+    var ov=document.getElementById('se-overlay');
+    if(ov){ov.remove();ev=null;}
+  }
+
+  function isEvalRoute(){return EVAL_ROUTES.test(window.location.pathname);}
+  function checkRoute(){
+    if(isEvalRoute()){
+      cacheImgs();
+      if(!document.getElementById('se-overlay'))setTimeout(buildOverlay,150);
+    }else{
+      if(document.getElementById('se-overlay'))destroyOverlay();
     }
   }
 
-  function watch(){if(typeof MutationObserver==='undefined')return;var mo=new MutationObserver(function(){markStepRows();observeRows();applyHeroEnter();});mo.observe(document.body,{childList:true,subtree:true});}
+  /* Monkey patch history para SPA route detection */
+  function patchHistory(){
+    var orig={pushState:history.pushState,replaceState:history.replaceState};
+    ['pushState','replaceState'].forEach(function(m){
+      history[m]=function(){var r=orig[m].apply(this,arguments);setTimeout(checkRoute,80);return r;};
+    });
+    window.addEventListener('popstate',function(){setTimeout(checkRoute,80);});
+  }
 
-  function init(){injectCSS();markStepRows();observeRows();applyHeroEnter();startToasts();watch();}
+  function watch(){if(typeof MutationObserver==='undefined')return;var mo=new MutationObserver(function(){markStepRows();observeRows();applyHeroEnter();cacheImgs();});mo.observe(document.body,{childList:true,subtree:true});}
+
+  function init(){
+    injectCSS();
+    markStepRows();observeRows();applyHeroEnter();
+    cacheImgs();
+    patchHistory();
+    checkRoute();
+    startToasts();
+    watch();
+  }
 
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(init,80);});}
   else{setTimeout(init,80);}
