@@ -1,0 +1,405 @@
+/* =================================================================
+   SHEIN · Premium App Enhancements
+   -----------------------------------------------------------------
+   Drop-in stylesheet — não altera o teu código React.
+   Aplica:
+     1. Fundo mesh gradient (estilo wallpaper iOS)
+     2. Cards com raio 20px + sombra suave
+     3. Step cards do /como-funciona com badge gradiente + ícone
+     4. CTA pretos com glow refinado
+     5. Toasts iOS-style (estilos consumidos pelo enhancements.js)
+     6. Pré-estado para reveal por IntersectionObserver
+   ================================================================= */
+
+/* ---------- 0. Tokens ---------- */
+:root {
+  --shein-ink: #0a0a0a;
+  --shein-paper: #fafafa;
+  --shein-rose: #ff4d6d;
+  --shein-coral: #ff8fab;
+  --shein-shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shein-shadow-cardHover: 0 12px 28px rgba(0, 0, 0, 0.08);
+  --shein-shadow-toast: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shein-shadow-cta: 0 12px 28px rgba(0, 0, 0, 0.32);
+  --shein-radius: 20px;
+}
+
+/* ---------- 1. Mesh Gradient Background ----------
+   Aplicado via pseudo-element em <html> para não conflitar
+   com qualquer background existente nas tuas páginas.            */
+html {
+  background-color: var(--shein-paper);
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--shein-paper);
+  background-image:
+    radial-gradient(at 18% 12%, rgba(255, 200, 215, 0.55) 0px, transparent 50%),
+    radial-gradient(at 82% 8%, rgba(255, 218, 180, 0.42) 0px, transparent 48%),
+    radial-gradient(at 88% 78%, rgba(212, 200, 255, 0.42) 0px, transparent 50%),
+    radial-gradient(at 8% 88%, rgba(255, 232, 210, 0.42) 0px, transparent 52%),
+    radial-gradient(at 50% 52%, rgba(255, 255, 255, 0.5) 0px, transparent 60%);
+  filter: saturate(108%);
+}
+
+/* Grão sutil em cima do mesh para textura premium */
+html::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+/* ---------- 2. Glass cards do app ----------
+   Sobrepõe a tua classe `.glass-card` com sombra + raio premium. */
+.glass-card {
+  border-radius: var(--shein-radius) !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  -webkit-backdrop-filter: saturate(160%) blur(20px);
+  backdrop-filter: saturate(160%) blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: var(--shein-shadow-card) !important;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shein-shadow-cardHover) !important;
+}
+
+/* ---------- 3. Step cards de /como-funciona ----------
+   Os teus step cards usam `.animate-slide-up` + um badge
+   `.w-12.h-12.bg-secondary`. Transformamos cada linha num
+   card individual com badge gradiente + slot para ícone. */
+.animate-slide-up:has(> div > .w-12.h-12.bg-secondary) {
+  background: #ffffff;
+  border-radius: var(--shein-radius);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shein-shadow-card);
+  padding: 18px 18px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-slide-up:has(> div > .w-12.h-12.bg-secondary):hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shein-shadow-cardHover);
+}
+
+/* Substitui o badge quadrado por uma cápsula gradiente */
+.animate-slide-up .w-12.h-12.bg-secondary {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 16px !important;
+  border: 0 !important;
+  background: linear-gradient(135deg, #fde2e4 0%, #fae0d8 100%) !important;
+  box-shadow:
+    var(--shein-shadow-card),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+  color: #b23a48 !important;
+  position: relative;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden;
+}
+
+/* Quando o JS injeta um ícone, escondemos o número (sobe
+   visualmente como subtítulo). Se o JS não correr, fica o
+   número como fallback aceitável. */
+.animate-slide-up .w-12.h-12.bg-secondary[data-shein-icon] > span {
+  position: absolute;
+  bottom: 4px;
+  right: 5px;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  color: rgba(178, 58, 72, 0.78) !important;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 1px 4px;
+}
+
+.animate-slide-up .w-12.h-12.bg-secondary[data-shein-icon] > svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Variações de tom por passo (1..4) */
+.animate-slide-up:nth-of-type(1) .w-12.h-12.bg-secondary {
+  background: linear-gradient(135deg, #fde2e4 0%, #fad0d8 100%) !important;
+  color: #b23a48 !important;
+}
+.animate-slide-up:nth-of-type(2) .w-12.h-12.bg-secondary {
+  background: linear-gradient(135deg, #fef0d2 0%, #fbd8b0 100%) !important;
+  color: #b86b2a !important;
+}
+.animate-slide-up:nth-of-type(3) .w-12.h-12.bg-secondary {
+  background: linear-gradient(135deg, #ece1ff 0%, #d4c5ff 100%) !important;
+  color: #6c4ad6 !important;
+}
+.animate-slide-up:nth-of-type(4) .w-12.h-12.bg-secondary {
+  background: linear-gradient(135deg, #d5f6e4 0%, #b4ecd0 100%) !important;
+  color: #2f8a5a !important;
+}
+
+/* O título do card ganha hierarquia ligeiramente reforçada */
+.animate-slide-up:has(> div > .w-12.h-12.bg-secondary) h3 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 4. Botão CTA polido ----------
+   O teu HTML usa `.cta-glow` em alguns CTAs e classes Tailwind
+   nos outros. Garantimos um look consistente. */
+.cta-glow,
+button.bg-foreground,
+[class*='bg-primary'][class*='text-primary-foreground'] {
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%) !important;
+  box-shadow:
+    var(--shein-shadow-cta),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease !important;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.cta-glow::after,
+button.bg-foreground::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cta-glow:hover::after,
+button.bg-foreground:hover::after {
+  opacity: 1;
+}
+
+.cta-glow:hover,
+button.bg-foreground:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+}
+
+.cta-glow:active,
+button.bg-foreground:active {
+  transform: scale(0.98);
+}
+
+/* ---------- 5. Pré-estado para IntersectionObserver ----------
+   Substituimos a animação por delay dos step cards por reveal
+   ancorado em viewport (o JS adiciona `.shein-revealed`).      */
+.animate-slide-up:has(> div > .w-12.h-12.bg-secondary):not(.shein-revealed) {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  animation: none !important;
+}
+
+.animate-slide-up.shein-revealed {
+  animation: sheinFadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+}
+
+@keyframes sheinFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- 6. Toasts iOS-style ----------
+   Container fixed top-center, banner com glass blur + bounce. */
+.shein-toast-container {
+  position: fixed;
+  inset: env(safe-area-inset-top, 0) 0 auto 0;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 12px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.shein-toast {
+  pointer-events: auto;
+  width: 92%;
+  max-width: 380px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: saturate(170%) blur(22px);
+  backdrop-filter: saturate(170%) blur(22px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shein-shadow-toast);
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--shein-ink);
+  transform-origin: top center;
+  transition: transform 0.15s ease;
+}
+
+.shein-toast:active {
+  transform: scale(0.98);
+}
+
+.shein-toast-avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 200, 215, 0.95) 0%, rgba(255, 218, 180, 0.95) 100%);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--shein-ink);
+  letter-spacing: 0.03em;
+}
+
+.shein-toast-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.shein-toast-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--shein-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shein-toast-sub {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.shein-toast-sub strong {
+  color: var(--shein-ink);
+  font-weight: 600;
+}
+
+.shein-toast-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #10b981;
+  animation: sheinPulseDot 1.6s ease-in-out infinite;
+}
+
+/* Animações de entrada / saída */
+.shein-toast-in {
+  animation: sheinToastIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.shein-toast-out {
+  animation: sheinToastOut 0.3s ease-in forwards;
+}
+
+@keyframes sheinToastIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.92);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sheinToastOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes sheinPulseDot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+/* ---------- 7. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .shein-toast-in,
+  .shein-toast-out,
+  .shein-toast-dot {
+    animation: none !important;
+  }
+  .animate-slide-up.shein-revealed {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-slide-up:has(> div > .w-12.h-12.bg-secondary):not(.shein-revealed) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
