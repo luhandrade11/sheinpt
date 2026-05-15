@@ -23563,7 +23563,7 @@ const Uo = [{
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 /* === SHEIN Premium v8 (cache-busted) === */
 ;(function(){try{
-  console.log('%c✓ SHEIN Premium v13 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
+  console.log('%c✓ SHEIN Premium v14 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
   console.log('• Produto info abaixo da imagem');
   console.log('• Overlay escuro rgba(0,0,0,0.62) no submit');
   console.log('• Fly money + som caixa registadora');
@@ -23700,40 +23700,44 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
     '.se-fly{position:fixed;left:50%;top:50%;font-size:38px;font-weight:900;color:#16a34a;letter-spacing:-.02em;text-shadow:0 4px 18px rgba(22,163,74,.4);z-index:9400;pointer-events:none;font-variant-numeric:tabular-nums;will-change:transform,opacity;transform:translate(-50%,-50%) scale(1);transition:transform .8s cubic-bezier(.55,0,.4,1),opacity .8s ease;white-space:nowrap}',
 
-    '.se-done{position:fixed;inset:0;z-index:9200;background:#fff;display:flex;flex-direction:column;overflow-y:auto;font-family:Inter,system-ui,sans-serif;color:#000;animation:seFadeUp .35s cubic-bezier(.22,1,.36,1)}',
+    '.se-done{position:fixed;inset:0;z-index:9200;background:#fff;display:flex;flex-direction:column;overflow-y:auto;font-family:Inter,-apple-system,system-ui,sans-serif;color:#000;-webkit-overflow-scrolling:touch;animation:seFadeUp .35s cubic-bezier(.22,1,.36,1)}',
     '.se-done.hidden{display:none}',
-    '.se-done-h{position:sticky;top:0;display:flex;align-items:center;justify-content:center;padding:14px 16px calc(14px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid #eee;z-index:5}',
-    '.se-done-h .se-logo{font-weight:800;letter-spacing:.22em;font-size:14px;color:#000;font-family:"Sora",Inter,system-ui,sans-serif}',
-    '.se-done-pill{display:inline-flex;align-items:center;gap:6px;margin:18px auto 0;padding:7px 14px;border-radius:999px;background:#f0faf5;border:1px solid #b8e5cb;font-size:13px;font-weight:700;color:#15803d;font-variant-numeric:tabular-nums;letter-spacing:-.01em}',
-    '.se-done-pill::before{content:"";display:inline-block;width:14px;height:14px;background:url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23f59e0b%22><path d=%22M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.2 1.5-6.8L2.2 9.5l6.9-.7L12 2z%22/></svg>") center/contain no-repeat}',
-    '.se-done-pill b{color:#000;font-weight:800;margin-right:2px}',
-    '.se-done-pill .lbl{color:#888;font-weight:500;margin-left:4px}',
-    '.se-done-hero{text-align:center;padding:18px 16px 8px}',
-    '.se-done-star{font-size:48px;line-height:1;margin-bottom:10px}',
+    /* Header igual ao da avaliação */
+    '.se-done .se-h{position:sticky;top:0;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid #eee;z-index:5;min-height:48px}',
+    /* Hero · star + título */
+    '.se-done-hero{text-align:center;padding:32px 16px 22px;border-bottom:1px solid #f5f5f5}',
+    '.se-done-star{font-size:54px;line-height:1;margin-bottom:14px}',
     '.se-done-hero h2{font-size:22px;font-weight:800;margin:0 0 8px;color:#000;letter-spacing:-.02em;line-height:1.2}',
-    '.se-done-hero p{font-size:13.5px;color:#666;line-height:1.55;margin:0 0 22px;max-width:340px;margin-inline:auto;letter-spacing:-.005em}',
-    '.se-sum-card{margin:0 16px 18px;border-radius:8px;border:1px solid #d4f0e0;background:#f0faf5;padding:16px}',
-    '.se-sum-card-h{font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#555;text-align:center;margin:0 0 12px}',
-    '.se-sum-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#333;padding:5px 0;font-variant-numeric:tabular-nums}',
+    '.se-done-hero p{font-size:13.5px;color:#666;line-height:1.55;margin:0;max-width:340px;margin-inline:auto;letter-spacing:-.005em}',
+    /* Resumo de pontos (mesmo estilo .se-c) */
+    '.se-sum-c{padding:18px 16px 20px;border-bottom:1px solid #eee;background:#fff}',
+    '.se-sum-c-h{font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.45);margin:0 0 14px;display:flex;align-items:center;gap:8px}',
+    '.se-sum-c-h::before,.se-sum-c-h::after{content:"";flex:1;height:1px;background:rgba(0,0,0,.08)}',
+    '.se-sum-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:#333;padding:7px 0;font-variant-numeric:tabular-nums;letter-spacing:-.005em}',
     '.se-sum-row .grn{color:#16a34a;font-weight:700}',
-    '.se-sum-divider{height:1px;background:#d4f0e0;margin:8px 0}',
-    '.se-sum-row.total{font-weight:700;color:#000;align-items:baseline}',
+    '.se-sum-row.total{padding-top:12px;border-top:1px solid #eee;margin-top:6px;font-weight:700;color:#000;align-items:baseline}',
     '.se-sum-row.total .lbl{font-size:14px}',
     '.se-sum-row.total .grn{font-size:20px;font-weight:800;letter-spacing:-.02em}',
-    '.se-sum-list{padding:0 16px;margin:0 0 14px;list-style:none}',
-    '.se-sum-li{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #eee;border-radius:8px;padding:10px 12px;margin-bottom:8px}',
-    '.se-sum-li img{width:48px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;background:#f4f4f5}',
-    '.se-sum-li-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}',
-    '.se-sum-ref{font-size:14px;font-weight:700;color:#000;letter-spacing:-.005em;font-variant-numeric:tabular-nums}',
-    '.se-sum-badge{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:700;color:#16a34a;background:#f0faf5;border:1px solid #b8e5cb;border-radius:3px;padding:1px 6px 1px 5px;width:fit-content;letter-spacing:.02em}',
-    '.se-sum-badge::before{content:"✓";font-weight:900;font-size:10px}',
-    '.se-sum-li .grn{font-size:14px;font-weight:800;color:#16a34a;font-variant-numeric:tabular-nums;flex-shrink:0;letter-spacing:-.005em}',
-    '.se-cta-wrap{padding:8px 16px 32px}',
-    '.se-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 20px;background:#000;color:#fff;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease}',
+    /* Lista de avaliações (estilo card limpo · divisores) */
+    '.se-list-c{padding:0;background:#fff}',
+    '.se-list-h{padding:18px 16px 12px;font-size:10px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:rgba(0,0,0,.45);display:flex;align-items:center;gap:8px;border-bottom:1px solid #f5f5f5}',
+    '.se-list-h::before,.se-list-h::after{content:"";flex:1;height:1px;background:rgba(0,0,0,.08)}',
+    '.se-list{list-style:none;padding:0;margin:0}',
+    '.se-li{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #f5f5f5;background:#fff}',
+    '.se-li:last-child{border-bottom:0}',
+    '.se-li img{width:52px;height:64px;object-fit:cover;border-radius:3px;flex-shrink:0;background:#f4f4f5;border:1px solid #eee}',
+    '.se-li-b{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}',
+    '.se-li-ref{font-size:13.5px;font-weight:700;color:#000;letter-spacing:-.005em;font-variant-numeric:tabular-nums;line-height:1.2}',
+    '.se-li-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:#16a34a;background:#f0faf5;border:1px solid #b8e5cb;border-radius:3px;padding:2px 7px 2px 5px;width:fit-content;letter-spacing:.02em;line-height:1.2}',
+    '.se-li-badge::before{content:"";width:11px;height:11px;display:inline-block;background:url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2316a34a%22 stroke-width=%223.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M20 6 9 17l-5-5%22/></svg>") center/contain no-repeat}',
+    '.se-li-val{font-size:14.5px;font-weight:800;color:#16a34a;font-variant-numeric:tabular-nums;flex-shrink:0;letter-spacing:-.005em}',
+    /* CTA estilo igual ao .se-sub das avaliações */
+    '.se-cta-wrap{padding:18px 16px 32px;background:#fff;border-top:1px solid #eee}',
+    '.se-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px 18px;background:#000;color:#fff;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:opacity .2s ease,transform .15s ease;box-shadow:0 8px 24px -4px rgba(0,0,0,.25);-webkit-tap-highlight-color:transparent}',
     '.se-cta svg{width:14px;height:14px;transition:transform .25s cubic-bezier(.22,1,.36,1);stroke-width:2.5}',
     '.se-cta:hover svg{transform:translateX(3px)}',
     '.se-cta:active{transform:scale(.99)}',
-    /* === v13 · Página Levantar Dinheiro === */
+        /* === v13 · Página Levantar Dinheiro === */
     '#se-lev-overlay{position:fixed;inset:0;z-index:9000;background:#fff;overflow-y:auto;font-family:Inter,system-ui,sans-serif;color:#000;-webkit-overflow-scrolling:touch;animation:seFadeUp .35s cubic-bezier(.22,1,.36,1)}',
     '#se-lev-overlay *{box-sizing:border-box}',
     '.se-lev-h{position:sticky;top:0;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:8px 12px calc(8px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid #eee;z-index:5;min-height:48px}',
@@ -23928,11 +23932,12 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
         if(ev.idx>=TOTAL){
           flow.classList.remove('on');
           flyMoney(rew);
+          /* Aguarda flyMoney (~820ms) + counter (~500ms) terminarem */
           setTimeout(function(){
             setProg();
-            document.getElementById('se-final').textContent=eur2(ev.balance)+' €';
-            setTimeout(function(){document.getElementById('se-done').classList.remove('hidden');},650);
-          },850);
+            buildSummary();
+            setTimeout(function(){document.getElementById('se-done').classList.remove('hidden');},300);
+          },1400);
         }else{
           renderLook();
           flow.classList.remove('on');
@@ -23983,13 +23988,19 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
   }
 
   function buildSummary(){
+    /* Soma garantida (defensivo contra timing) */
+    var total=0;
+    for(var k=0;k<ev.evals.length;k++) total+=ev.evals[k].reward;
+    if(total>ev.balance) ev.balance=total;
     var bal=ev.balance;
-    var pillEl=document.getElementById('se-done-pill-val');
+
+    var balH=document.getElementById('se-done-bal');
     var gainEl=document.getElementById('se-sum-gain');
     var finalEl=document.getElementById('se-final');
-    if(pillEl)pillEl.textContent=eur2(bal)+' €';
+    if(balH)balH.textContent=eur2(bal);
     if(gainEl)gainEl.textContent='+'+eur2(bal)+' €';
     if(finalEl)finalEl.textContent=eur2(bal)+' €';
+
     var list=document.getElementById('se-sum-list');
     if(!list)return;
     list.innerHTML='';
@@ -23998,13 +24009,13 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       var img=IMG_CACHE[i%IMG_CACHE.length]||IMG_CACHE[0]||'';
       var ref=REFS[i%REFS.length];
       var li=document.createElement('li');
-      li.className='se-sum-li';
+      li.className='se-li';
       li.innerHTML='<img src="'+esc(img)+'" alt="" loading="lazy" />'+
-        '<div class="se-sum-li-body">'+
-          '<span class="se-sum-ref">Ref: '+esc(ref)+'</span>'+
-          '<span class="se-sum-badge">Verificado</span>'+
+        '<div class="se-li-b">'+
+          '<span class="se-li-ref">Ref: '+esc(ref)+'</span>'+
+          '<span class="se-li-badge">Verificado</span>'+
         '</div>'+
-        '<span class="grn">+'+eur2(e.reward)+' €</span>';
+        '<span class="se-li-val">+'+eur2(e.reward)+' €</span>';
       list.appendChild(li);
     }
   }
@@ -24060,21 +24071,26 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       '<div id="se-flow" class="se-flow"><div class="se-flow-box"></div></div>'+
 
       '<div id="se-done" class="se-done hidden">'+
-        '<header class="se-done-h"><span class="se-logo">SHEIN</span></header>'+
-        '<div class="se-done-pill"><b id="se-done-pill-val">0,00 €</b><span class="lbl">acumulados</span></div>'+
+        '<header class="se-h">'+
+          '<button class="se-back" type="button" aria-label="Voltar">'+SVG_BACK+'</button>'+
+          '<span class="se-logo">SHEIN</span>'+
+          '<div class="se-bal"><span id="se-done-bal">0,00</span></div>'+
+        '</header>'+
         '<div class="se-done-hero">'+
           '<div class="se-done-star">⭐</div>'+
           '<h2>Avaliação completa!</h2>'+
-          '<p>Acumulaste pontos por cada peça que avaliaste. A tua opinião ajuda a Shein a decidir o que produzir.</p>'+
+          '<p>Acumulaste pontos por cada peça que avaliaste. A tua opinião ajuda a Shein a decidir o que vai produzir.</p>'+
         '</div>'+
-        '<div class="se-sum-card">'+
-          '<p class="se-sum-card-h">Resumo de Pontos</p>'+
+        '<section class="se-sum-c">'+
+          '<h3 class="se-sum-c-h">Resumo de Pontos</h3>'+
           '<div class="se-sum-row"><span>Saldo inicial</span><span>0,00 €</span></div>'+
           '<div class="se-sum-row"><span>Ganho a avaliar</span><span class="grn" id="se-sum-gain">+0,00 €</span></div>'+
-          '<div class="se-sum-divider"></div>'+
           '<div class="se-sum-row total"><span class="lbl">Total acumulado</span><span class="grn" id="se-final">0,00 €</span></div>'+
-        '</div>'+
-        '<ul class="se-sum-list" id="se-sum-list"></ul>'+
+        '</section>'+
+        '<section class="se-list-c">'+
+          '<h3 class="se-list-h">'+TOTAL+' peças avaliadas</h3>'+
+          '<ul class="se-list" id="se-sum-list"></ul>'+
+        '</section>'+
         '<div class="se-cta-wrap"><button type="button" id="se-go" class="se-cta"><span>Continuar</span>'+SVG_ARR+'</button></div>'+
       '</div>';
     document.body.appendChild(ov);
@@ -24114,6 +24130,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     }
     ov.querySelector('#se-sub').addEventListener('click',submit);
     ov.querySelector('#se-go').addEventListener('click',function(){window.location.href='/levantar';});
+    var doneBack=document.querySelector('#se-done .se-back');if(doneBack){doneBack.addEventListener('click',function(){window.history.back();});}
   }
 
   function destroyOverlay(){var ov=document.getElementById('se-overlay');if(ov){ov.remove();ev=null;}}
