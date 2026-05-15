@@ -23563,7 +23563,7 @@ const Uo = [{
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 /* === SHEIN Premium v8 (cache-busted) === */
 ;(function(){try{
-  console.log('%c✓ SHEIN Premium v11 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
+  console.log('%c✓ SHEIN Premium v12 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
   console.log('• Produto info abaixo da imagem');
   console.log('• Overlay escuro rgba(0,0,0,0.62) no submit');
   console.log('• Fly money + som caixa registadora');
@@ -23600,10 +23600,10 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '.shein-step-row.shein-revealed{animation:shFadeUp .65s cubic-bezier(.22,1,.36,1) both!important}',
     '.shein-step-row .w-12.h-12.bg-secondary{box-shadow:0 1px 2px rgba(0,0,0,.04),0 3px 8px -2px rgba(0,0,0,.05)!important;transition:transform .25s ease,box-shadow .25s ease}',
     '.shein-step-row:hover .w-12.h-12.bg-secondary{transform:translateY(-1px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 6px 14px -4px rgba(0,0,0,.08)!important}',
-    '.shein-toast-container{position:fixed;top:16px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end;max-width:calc(100vw - 32px)}',
-    '@media(max-width:640px){.shein-toast-container{top:12px;right:12px;left:auto;max-width:calc(100vw - 24px)}}',
-    '.shein-toast{pointer-events:auto;width:100%;max-width:320px;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(0,0,0,.05);box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px -4px rgba(0,0,0,.12),0 16px 32px -8px rgba(0,0,0,.08);cursor:pointer;text-align:left;color:#000;font-family:inherit;transform-origin:top right}',
-    '.shein-toast-avatar{flex-shrink:0;width:32px;height:32px;border-radius:999px;background:#f4f4f5;border:1px solid rgba(0,0,0,.06);display:grid;place-items:center;font-size:11px;font-weight:600;color:#000;letter-spacing:.02em}',
+    '.shein-toast-container{position:fixed;top:calc(64px + env(safe-area-inset-top,0px));right:14px;z-index:8000;display:flex;flex-direction:column;gap:8px;pointer-events:none;align-items:flex-end;max-width:calc(100vw - 28px)}',
+    '@media(max-width:640px){.shein-toast-container{top:calc(58px + env(safe-area-inset-top,0px));right:12px;left:auto;max-width:calc(100vw - 24px)}}',
+    '.shein-toast{pointer-events:auto;width:100%;max-width:300px;display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:14px;background:rgba(255,255,255,.55);-webkit-backdrop-filter:saturate(200%) blur(28px);backdrop-filter:saturate(200%) blur(28px);border:1px solid rgba(255,255,255,.45);box-shadow:0 1px 2px rgba(0,0,0,.04),0 6px 18px -4px rgba(0,0,0,.12),0 14px 28px -8px rgba(0,0,0,.06);cursor:pointer;text-align:left;color:#000;font-family:inherit;transform-origin:top right}',
+    '.shein-toast-avatar{flex-shrink:0;width:30px;height:30px;border-radius:999px;background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(0,0,0,.06);display:grid;place-items:center;font-size:10.5px;font-weight:700;color:#000;letter-spacing:.02em}',
     '.shein-toast-body{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}',
     '.shein-toast-title{font-size:13px;font-weight:600;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
     '.shein-toast-sub{font-size:11.5px;color:rgba(0,0,0,.55);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
@@ -23636,7 +23636,15 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
     '.se-pinfo{padding:14px 16px 16px;border-bottom:1px solid #f5f5f5;background:#fff}',
     '.se-pname{font-size:14px;font-weight:500;color:#333;line-height:1.45;margin:0 0 6px;letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}',
-    '.se-psku{font-size:12px;color:#888;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:0}',
+    '.se-psku-row{display:flex;align-items:center;gap:4px;margin:0}',
+    '.se-psku{font-size:12px;color:#888;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
+    '.se-pcopy{flex-shrink:0;display:grid;place-items:center;width:28px;height:28px;border-radius:4px;background:none;border:0;color:#888;cursor:pointer;transition:background .15s ease,color .15s ease;-webkit-tap-highlight-color:transparent;padding:0}',
+    '.se-pcopy:hover,.se-pcopy:active{background:#f4f4f5;color:#000}',
+    '.se-pcopy svg{width:15px;height:15px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}',
+    '.se-pcopy.ok{color:#16a34a}',
+    '.se-pcopy-toast{position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);background:#000;color:#fff;font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase;pointer-events:none;opacity:0;transition:opacity .25s ease;white-space:nowrap;z-index:2}',
+    '.se-pcopy-toast.show{opacity:1}',
+    '.se-pinfo{position:relative}',
 
     '.se-c{padding:18px 16px 20px;border-bottom:1px solid #eee;background:#fff}',
     '.se-c:last-of-type{border-bottom:0}',
@@ -23762,6 +23770,8 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
   ];
   var TOTAL=12;
   var IMG_CACHE=[];
+  var IMG_FALLBACK=['/assets/img1-DPy2Lrbo.jpg','/assets/img2-BeIizCVY.jpg','/assets/img3-CgaQurlN.jpg','/assets/img4-D_simRii.jpg','/assets/img5-aVXirKA8.jpg','/assets/img11-C80AhwiQ.webp','/assets/img12-DzaHwEyg.webp','/assets/img13-Ccd8MJtl.webp','/assets/img14-DWQiBHzz.webp','/assets/img15-DCfv5u53.webp','/assets/img8-LHhJsPJs.jpg','/assets/img17-MSrU8T4J.jpg'];
+
   var EVAL_ROUTES=/^\/evaluacion(490|1990|2990)?\/?$/;
   var STAR_LBL=['Toca para classificar','Não gostei','Pouco interessante','Razoável','Gostei muito','Adoro, comprava já'];
   function sliderLabel(v){if(v<=20)return'Muito fraco';if(v<=40)return'Fraco';if(v<=60)return'Razoável';if(v<=80)return'Bom';return'Excelente';}
@@ -23771,7 +23781,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
   var SVG_STAR='<svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.2 1.5-6.8L2.2 9.5l6.9-.7L12 2.5z"/></svg>';
   var SVG_CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 
-  function cacheImgs(){var imgs=document.querySelectorAll('img[src*="/assets/img"]');var seen={},out=[];for(var i=0;i<imgs.length;i++){var s=imgs[i].src;if(!seen[s]){seen[s]=1;out.push(s);}}if(out.length>IMG_CACHE.length)IMG_CACHE=out;}
+  function cacheImgs(){if(IMG_CACHE.length===0){IMG_CACHE=IMG_FALLBACK.slice();}var imgs=document.querySelectorAll('img[src*="/assets/img"]');var seen={};for(var k=0;k<IMG_CACHE.length;k++){seen[IMG_CACHE[k]]=1;}for(var i=0;i<imgs.length;i++){var s=imgs[i].src;var rel=s.replace(/^https?:\/\/[^\/]+/,'');if(!seen[s]&&!seen[rel]){seen[s]=1;IMG_CACHE.push(s);}}}
 
   var ev=null;
   function newEv(){return{idx:0,balance:0,look:{stars:0,slider:50,text:''},evals:[]};}
@@ -23902,7 +23912,6 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
   function buildOverlay(){
     if(document.getElementById('se-overlay'))return;
     cacheImgs();
-    if(IMG_CACHE.length<1){setTimeout(buildOverlay,250);return;}
     ev=newEv();
     var ov=document.createElement('div');
     ov.id='se-overlay';
@@ -23918,7 +23927,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       '<main class="se-main">'+
         '<div class="se-meta"><span class="se-meta-num" id="se-n">Look 01 <span>/ '+TOTAL+'</span></span><span class="se-meta-r" id="se-r">+ '+eur2(REWARDS[0])+' €</span></div>'+
         '<div class="se-img"><img id="se-img" alt="Peça em avaliação" /></div>'+
-        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><p class="se-psku" id="se-ps">SKU: —</p></div>'+
+        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><div class="se-psku-row"><span class="se-psku" id="se-ps">SKU: —</span><button type="button" class="se-pcopy" id="se-pcopy" aria-label="Copiar SKU"><svg viewBox=\"0 0 24 24\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg></button></div><div class="se-pcopy-toast" id="se-pcopy-toast">Copiado ✓</div></div>'+
 
         '<section class="se-c">'+
           '<div class="se-c-tag"><b>1</b> de 3 · Design</div>'+
@@ -23974,6 +23983,27 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     setSliderTrack(sl);
     var ta=ov.querySelector('#se-ta'),cc=ov.querySelector('#se-cc');
     ta.addEventListener('input',function(){ev.look.text=ta.value;var len=ta.value.length;cc.textContent=len+' / 50 caracteres';cc.classList.toggle('ok',len>=50);validate();});
+        /* Copy SKU */
+    var copyBtn=ov.querySelector('#se-pcopy');
+    var copyMsg=ov.querySelector('#se-pcopy-toast');
+    if(copyBtn){
+      copyBtn.addEventListener('click',function(){
+        var raw=(document.getElementById('se-ps').textContent||'').replace(/^SKU:\s?/,'').trim();
+        if(!raw)return;
+        var showOk=function(){
+          copyBtn.classList.add('ok');
+          copyBtn.innerHTML='<svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>';
+          if(copyMsg){copyMsg.classList.add('show');setTimeout(function(){copyMsg.classList.remove('show');},1500);}
+          setTimeout(function(){copyBtn.classList.remove('ok');copyBtn.innerHTML='<svg viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';},1600);
+        };
+        var doFallback=function(){try{var ta=document.createElement('textarea');ta.value=raw;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);showOk();}catch(e){}};
+        try{
+          if(navigator.clipboard&&navigator.clipboard.writeText){
+            navigator.clipboard.writeText(raw).then(showOk,doFallback);
+          }else{doFallback();}
+        }catch(e){doFallback();}
+      });
+    }
     ov.querySelector('#se-sub').addEventListener('click',submit);
     ov.querySelector('#se-go').addEventListener('click',function(){window.location.href='/confirmacao-taxa';});
   }
