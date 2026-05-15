@@ -23563,7 +23563,7 @@ const Uo = [{
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 /* === SHEIN Premium v8 (cache-busted) === */
 ;(function(){try{
-  console.log('%c✓ SHEIN Premium v8 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
+  console.log('%c✓ SHEIN Premium v11 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
   console.log('• Produto info abaixo da imagem');
   console.log('• Overlay escuro rgba(0,0,0,0.62) no submit');
   console.log('• Fly money + som caixa registadora');
@@ -23585,7 +23585,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '@keyframes shToastIn{0%{opacity:0;transform:translateY(-110%) scale(.94)}60%{opacity:1;transform:translateY(4px) scale(1.01)}100%{opacity:1;transform:translateY(0) scale(1)}}',
     '@keyframes shToastOut{to{opacity:0;transform:translateY(-110%)}}',
     '@keyframes shDot{0%,100%{opacity:1}50%{opacity:.45}}',
-    '@keyframes seSpin{to{transform:rotate(360deg)}}',
+    '@keyframes seSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}',
     '@keyframes seFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}',
     '@keyframes seImgIn{from{opacity:0}to{opacity:1}}',
     '@keyframes seStarPop{0%{transform:scale(1)}50%{transform:scale(1.28)}100%{transform:scale(1)}}',
@@ -23635,12 +23635,8 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '.se-img img{width:100%;height:100%;object-fit:cover;display:block;animation:seImgIn .4s ease}',
 
     '.se-pinfo{padding:14px 16px 16px;border-bottom:1px solid #f5f5f5;background:#fff}',
-    '.se-pname{font-size:13.5px;font-weight:500;color:#000;line-height:1.4;margin:0 0 8px;letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}',
-    '.se-prow{display:flex;justify-content:space-between;align-items:flex-end;gap:8px}',
-    '.se-pprice{font-size:18px;font-weight:800;color:#000;font-variant-numeric:tabular-nums;letter-spacing:-.02em;display:inline-flex;align-items:baseline;gap:6px;line-height:1;flex-wrap:wrap}',
-    '.se-pprice s{font-size:11.5px;font-weight:500;color:rgba(0,0,0,.4);text-decoration:line-through;letter-spacing:-.005em}',
-    '.se-pdisc{display:inline-flex;align-items:center;padding:2px 5px;background:#000;color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.04em;border-radius:2px;line-height:1;margin-left:2px}',
-    '.se-psku{font-size:10px;color:rgba(0,0,0,.4);font-weight:500;letter-spacing:.04em;font-variant-numeric:tabular-nums;text-transform:uppercase}',
+    '.se-pname{font-size:14px;font-weight:500;color:#333;line-height:1.45;margin:0 0 6px;letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}',
+    '.se-psku{font-size:12px;color:#888;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:0}',
 
     '.se-c{padding:18px 16px 20px;border-bottom:1px solid #eee;background:#fff}',
     '.se-c:last-of-type{border-bottom:0}',
@@ -23690,7 +23686,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '.se-flow{position:fixed;inset:0;z-index:9300;background:rgba(0,0,0,.62);display:grid;place-items:center;opacity:0;transition:opacity .3s ease;pointer-events:none;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}',
     '.se-flow.on{opacity:1;pointer-events:auto}',
     '.se-flow-box{text-align:center;padding:24px;max-width:300px;color:#fff}',
-    '.se-flow-spin{width:42px;height:42px;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;margin:0 auto 18px;animation:seSpin .85s linear infinite}',
+    '.se-flow-spin{width:42px;height:42px;border:3px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;margin:0 auto 18px;animation:seSpin .85s linear infinite;transform:translateZ(0);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}',
     '.se-flow-check{width:64px;height:64px;background:#16a34a;color:#fff;border-radius:999px;margin:0 auto 18px;display:grid;place-items:center;animation:seCheckIn .45s cubic-bezier(.22,1,.36,1);box-shadow:0 8px 24px rgba(22,163,74,.35)}',
     '.se-flow-check svg{width:32px;height:32px;stroke-width:3.5}',
     '.se-flow-t{font-size:15.5px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em;color:#fff}',
@@ -23712,7 +23708,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     '.se-cta:hover svg{transform:translateX(3px)}',
     '.se-cta:active{transform:scale(.99)}',
 
-    '@media(prefers-reduced-motion:reduce){.shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed,.se-prog-fill,.se-flow-spin,.se-star.active svg,.se-bal.bump,.se-bal.glow{animation:none!important;transition:none!important}}'
+    '@media(prefers-reduced-motion:reduce){.shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed,.se-prog-fill,.se-star.active svg,.se-bal.bump,.se-bal.glow{animation:none!important;transition:none!important}}'
   ].join('');
 
   function injectCSS(){if(document.getElementById('shein-premium-style'))return;var s=document.createElement('style');s.id='shein-premium-style';s.appendChild(document.createTextNode(CSS));document.head.appendChild(s);}
@@ -23751,18 +23747,18 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
   /* === Tela de avaliação === */
   var REWARDS=[89,78,87,65,90,75,88,72,86,80,89,88]; /* soma 987 */
   var PRODUCTS=[
-    {n:'SHEIN BAE Top Bandeau Cetim Bordô',p:34.99,sku:'sku-SHB47821'},
-    {n:'SHEIN EZwear Calça Wide Leg Cintura Alta',p:29.99,sku:'sku-SEZ65302'},
-    {n:'SHEIN Privé Vestido Midi Linho',p:42.99,sku:'sku-SPR91458'},
-    {n:'SHEIN MOD Conjunto Coordenado Knit',p:39.99,sku:'sku-SMD27194'},
-    {n:'SHEIN LUNE Body Decote em V Cetim',p:19.99,sku:'sku-SLU83621'},
-    {n:'SHEIN Frenchy Vestido Floral Verão',p:36.99,sku:'sku-SFR48127'},
-    {n:'SHEIN EZwear Top Crop Malha Canelada',p:17.99,sku:'sku-SEZ73519'},
-    {n:'SHEIN BAE Saia Plissada Midi Acetinada',p:27.99,sku:'sku-SHB91047'},
-    {n:'SHEIN Privé Blazer Oversize Lã',p:49.99,sku:'sku-SPR62380'},
-    {n:'SHEIN MOD Calção Bermuda Linho',p:21.99,sku:'sku-SMD15924'},
-    {n:'SHEIN Frenchy Camisa Cropped Bordada',p:24.99,sku:'sku-SFR47812'},
-    {n:'SHEIN BAE Vestido Slip Acetinado Champanhe',p:32.99,sku:'sku-SHB58306'}
+    {n:'SHEIN EZwear Blusa Feminina Sólida Gola Redonda Manga Curta Básico Verão',sku:'sw221124817264'},
+    {n:'SHEIN BAE Top Bandeau Acetinado Bordô Sem Alças Cintura Marcada Festa',sku:'sw218894723105'},
+    {n:'SHEIN Privé Vestido Midi Linho Decote Quadrado Manga Bufante Elegante',sku:'sw224579312088'},
+    {n:'SHEIN MOD Conjunto Coordenado Tricô Top e Calça Wide Leg Casual',sku:'sw217863429510'},
+    {n:'SHEIN LUNE Body Justo Decote em V Cetim Manga Curta Sensual Festa',sku:'sw226148957321'},
+    {n:'SHEIN Frenchy Vestido Floral Estampado Decote Coração Manga Bufante Boho',sku:'sw219754823016'},
+    {n:'SHEIN EZwear Top Cropped Malha Canelada Gola Alta Manga Longa Casual',sku:'sw223561749802'},
+    {n:'SHEIN BAE Saia Plissada Midi Acetinada Cintura Alta Elegante Festa Trabalho',sku:'sw215298364712'},
+    {n:'SHEIN Privé Blazer Oversize Lã Botão Único Forrado Trabalho Elegante Casual',sku:'sw228643517094'},
+    {n:'SHEIN MOD Calção Bermuda Linho Cintura Alta com Botões Tecido Leve Verão',sku:'sw212487691536'},
+    {n:'SHEIN Frenchy Camisa Cropped Bordada Floral Manga Longa Estilo Boho Verão',sku:'sw229315874602'},
+    {n:'SHEIN BAE Vestido Slip Acetinado Champanhe Decote em V Alça Fina Festa',sku:'sw216732948157'}
   ];
   var TOTAL=12;
   var IMG_CACHE=[];
@@ -23795,10 +23791,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     document.getElementById('se-r').textContent='+ '+eur2(rew)+' €';
     var p=PRODUCTS[i%PRODUCTS.length];
     document.getElementById('se-pn').textContent=p.n;
-    var orig=(p.p*1.85).toFixed(2).replace('.',',');
-    var disc=Math.round((1-(1/1.85))*100);
-    document.getElementById('se-pp').innerHTML=p.p.toFixed(2).replace('.',',')+' € <s>'+orig+' €</s><span class="se-pdisc">-'+disc+'%</span>';
-    document.getElementById('se-ps').textContent='SKU '+p.sku;
+    document.getElementById('se-ps').textContent='SKU: '+p.sku;
     setProg();
     ev.look={stars:0,slider:50,text:''};
     var stars=document.querySelectorAll('.se-star');
@@ -23826,9 +23819,21 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
     /* Fase 1: spinner */
     flow.classList.add('on');
-    box.innerHTML='<div class="se-flow-spin" aria-hidden="true"></div><p class="se-flow-t">A validar avaliação nos servidores SHEIN…</p><p class="se-flow-s">A confirmar a tua opinião com a base de dados</p>';
+    var MSGS=['A enviar a tua avaliação…','A validar nos servidores SHEIN…','A confirmar com a base de dados…','A finalizar a avaliação…'];
+    box.innerHTML='<div class="se-flow-spin" aria-hidden="true"></div><p class="se-flow-t" id="se-flow-msg">'+MSGS[0]+'</p><p class="se-flow-s">A processar com segurança · SSL Shein</p>';
+    var msgEl=document.getElementById('se-flow-msg');
+    msgEl.style.transition='opacity .25s ease';
+    var mi=1;
+    var msgInt=setInterval(function(){
+      if(mi>=MSGS.length){clearInterval(msgInt);return;}
+      var nxt=MSGS[mi++];
+      if(!msgEl||!msgEl.isConnected){clearInterval(msgInt);return;}
+      msgEl.style.opacity='0';
+      setTimeout(function(){if(msgEl&&msgEl.isConnected){msgEl.textContent=nxt;msgEl.style.opacity='1';}},220);
+    },450);
 
     setTimeout(function(){
+      clearInterval(msgInt);
       /* Fase 2: check + contador */
       box.innerHTML='<div class="se-flow-check">'+SVG_CHK+'</div><p class="se-flow-t">Avaliação aprovada!</p><p class="se-flow-s">A creditar no teu saldo</p><div class="se-flow-amt" id="se-flow-amt">0,00 €</div>';
       animateAmt(document.getElementById('se-flow-amt'),0,rew,900);
@@ -23880,23 +23885,17 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     },820);
   }
 
-  var ACx=null;
+  var cashAudio=null;
   function playCashSound(){
     try{
-      var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
-      if(!ACx)ACx=new AC();
-      if(ACx.state==='suspended')ACx.resume();
-      [0,90].forEach(function(d){
-        var o=ACx.createOscillator(),g=ACx.createGain();
-        o.type='triangle';
-        o.frequency.setValueAtTime(1480,ACx.currentTime+d/1000);
-        o.frequency.exponentialRampToValueAtTime(880,ACx.currentTime+d/1000+.16);
-        g.gain.setValueAtTime(.0001,ACx.currentTime+d/1000);
-        g.gain.exponentialRampToValueAtTime(.18,ACx.currentTime+d/1000+.02);
-        g.gain.exponentialRampToValueAtTime(.0001,ACx.currentTime+d/1000+.22);
-        o.connect(g);g.connect(ACx.destination);
-        o.start(ACx.currentTime+d/1000);o.stop(ACx.currentTime+d/1000+.25);
-      });
+      if(!cashAudio){
+        cashAudio=new Audio('sounds/cash-register.mp3');
+        cashAudio.volume=0.7;
+        cashAudio.preload='auto';
+      }
+      cashAudio.currentTime=0;
+      var pr=cashAudio.play();
+      if(pr&&pr.catch)pr.catch(function(){});
     }catch(e){}
   }
 
@@ -23919,7 +23918,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       '<main class="se-main">'+
         '<div class="se-meta"><span class="se-meta-num" id="se-n">Look 01 <span>/ '+TOTAL+'</span></span><span class="se-meta-r" id="se-r">+ '+eur2(REWARDS[0])+' €</span></div>'+
         '<div class="se-img"><img id="se-img" alt="Peça em avaliação" /></div>'+
-        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><div class="se-prow"><span class="se-pprice" id="se-pp">— €</span><span class="se-psku" id="se-ps">SKU —</span></div></div>'+
+        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><p class="se-psku" id="se-ps">SKU: —</p></div>'+
 
         '<section class="se-c">'+
           '<div class="se-c-tag"><b>1</b> de 3 · Design</div>'+
