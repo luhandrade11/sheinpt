@@ -1,3 +1,11 @@
+/* === SHEIN Premium v8 (cache-busted) === */
+;(function(){try{
+  console.log('%c✓ SHEIN Premium v8 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
+  console.log('• Produto info abaixo da imagem');
+  console.log('• Overlay escuro rgba(0,0,0,0.62) no submit');
+  console.log('• Fly money + som caixa registadora');
+  console.log('• Fix mobile force-reveal');
+}catch(e){}})();
 /* SHEIN · Premium Enhancements v7 (standalone)
    · Carregado como <script src="js/_inject_v7.js" defer> no index.html
    · Não altera o bundle React principal — corre por cima
